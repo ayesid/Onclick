@@ -44,7 +44,7 @@
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+						<li><a class="nav-link" href=""><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -65,12 +65,12 @@
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-								<img src="" class="img-fluid" width="400px">
+								<img src="img/1-removebg-preview.png" class="img-fluid" width="700px"> 
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> <br> <br> <br>
 		<!-- End Hero Section -->
 
 		
@@ -113,7 +113,7 @@
 
 					<div class="col-lg-5">
 						<div class="img-wrap">
-							<img src="img/can4.jpg" alt="Image" class="img-fluid" width="700px" height="700px">
+							<img src="img/1724729894.jpg" alt="Image" class="img-fluid" width="700px" height="700px">
 						</div>
 					</div>
 
@@ -177,105 +177,6 @@
 
 		
 
-		<!-- Start Testimonial Slider -->
-		<div class="testimonial-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 mx-auto text-center">
-						<h2 class="section-title">Testimonios</h2>
-					</div>
-				</div>
-
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="testimonial-slider-wrap text-center">
-
-							<div id="testimonial-nav">
-								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
-								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
-							</div>
-
-							<div class="testimonial-slider">
-								
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;"¡Increíble experiencia con esta aplicación de reservas de canchas! Como aficionado al fútbol, siempre busco lugares de calidad para jugar con mis amigos. Esta aplicación no solo me facilita encontrar canchas cerca de mí, sino que también me brinda la conveniencia de reservar en línea en cuestión de segundos. Las instalaciones son excelentes, las canchas están en perfecto estado y el proceso de reserva es súper sencillo. ¡Definitivamente la recomiendo a todos los amantes del deporte!"&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">Usuario</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;"Desde que empecé a usar la app de reservas de canchas, ha sido mucho más fácil organizar partidos con mis amigos. La interfaz es intuitiva y siempre encontramos disponibilidad en las mejores canchas de la ciudad. ¡Muy recomendable!"&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person_2.jpg" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Cesar jaramillo</h3>
-													<span class="position d-block mb-3">Usuario</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;"Antes era un dolor de cabeza encontrar y reservar canchas sintéticas, pero con esta app todo es mucho más sencillo. Me encanta que puedo ver las reseñas de otros usuarios y elegir la cancha que mejor se ajuste a nuestras necesidades."&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person_3.jpg" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Oscar</h3>
-													<span class="position d-block mb-3">Usuario</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Testimonial Slider -->
-
-		
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section bg-gradient" >

@@ -35,10 +35,8 @@
         <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
             <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
             <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
-
             <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
             <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-            <li><a class="nav-link" href="#">Blog</a></li>
             <li><a class="nav-link" href="{{route('Contactanos')}}">Contactanos</a></li>
         </ul>
 
@@ -65,7 +63,7 @@
         </div>
         <div class="col-lg-7">
           <div class="hero-img-wrap">
-            <img src="img/logo-removebg-preview.png" class="img-fluid" alt="Imagen destacada">
+            <img src="img/5-removebg-preview.png" class="img-fluid" alt="Imagen destacada" width="550px">
           </div>
         </div>
       </div>

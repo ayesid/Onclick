@@ -18,41 +18,39 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"		
 		
+
+		
+
 	</head>
 
 	<body>
 
 		<!-- Start Header/Navigation -->
-		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar" >
-			<div class="container" >
-				<div class="hero-img-wrap">
-					<img src="/img/logo-removebg-preview.png" class="img-fluid" style="width: 100px;">
-				</div>
-				<div class="hero-img-wrap">	</div>
+  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+    <div class="container">
+      <div class="hero-img-wrap">
+        <img src="/img/logo-removebg-preview.png" class="img-fluid" style="width: 100px;">
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsFurni">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+          <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
+          <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros Deportivos</a></li>
 
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                        <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                        <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
-
-						<li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
-						<li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-						<li><a class="nav-link" href="{{route('Contactanos')}}">Contactanos</a></li>
-					</ul>
-
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
-					</ul>
-				</div>
-			</div>
-				
-		</nav>
-		<!-- End Header/Navigation -->
+          <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca De Nosotros</a></li>
+          <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
+          <li><a class="nav-link" href="{{route('Contactanos')}}">Contactanos</a></li>
+        </ul>
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+          <li><a class="nav-link" href="#"><img src="/images/user.svg"></a></li>
+          <li><a class="nav-link" href="cart.html"><img src="/images/cart.svg"></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Header/Navigation -->
 
 		
 
@@ -71,10 +69,12 @@
 					<div class="container">
 						<div class="row p-5">
 							<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-								<img class="img-fluid" src="img/logo_sinfondo.png" alt="" width="300px">
+								<img class="img-fluid" src="img/9-removebg-preview.png" alt="" width="500px">
 							</div>
 							<div class="col-lg-6 mb-0 d-flex align-items-center">
 								<div class="text-align-left align-self-center">
+									<img class="img-fluid" src="img/logo-removebg-preview.png" alt="" width="100px">
+
 									<h1 class="h1 text-success"><b>ONCLICK</b> <br>"Sinteticas a un click"</h1>
 									<h3 class="h2">facil y seguro</h3>
 									<p>
@@ -89,7 +89,7 @@
 					<div class="container">
 						<div class="row p-5">
 							<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-								<img class="img-fluid" src="img/jugadpng3-removebg-preview.png" alt="" style="height: 300px;">
+								<img class="img-fluid" src="img/1-removebg-preview.png" alt="" style="height: 400px;">
 							</div>
 							<div class="col-lg-6 mb-0 d-flex align-items-center">
 								<div class="text-align-left">
@@ -108,7 +108,7 @@
 					<div class="container">
 						<div class="row p-5">
 							<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-								<img class="img-fluid" src="img/jugadpng2-removebg-preview.png" alt="" style="height: 300px;"  >
+								<img class="img-fluid" src="img/5-removebg-preview.png" alt="" style="height: 400px;"  >
 							</div>
 							<div class="col-lg-6 mb-0 d-flex align-items-center">
 								<div class="text-align-left">
@@ -134,7 +134,9 @@
 		</div>
 <!-- fin carrusel Hero Section -->
 
-		<!-- fin carrusel Hero Section -->
+		
+
+
 		
 
 		<!-- Start Product Section -->
@@ -143,10 +145,10 @@
 				<div class="row">
 
 					<!-- Start Column 1 -->
-					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0 ">
 						<h2 class="mb-4 section-title">Eventos y promociones </h2>
 						<p class="mb-4">Contamos con Canchas Sintèticas para que disfrutes con tu grupo de amigos. Disponibles para alquiler por horas, torneos y eventos en general. </p>
-						<p><a href="{{ route('centroDeportivo.listar') }}" class="btn text-war">Reservar cancha</a></p>
+						<p><a href="{{ route('centroDeportivo.listar') }}" class="btn btn-primary">Reservar cancha</a></p>
 					</div> 
 					<!-- End Column 1 -->
 
@@ -280,7 +282,7 @@
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
 						<div class="product-item-sm d-flex">
 							<div class="thumbnail">
-								<img src="img/jugadpng3-removebg-preview.png" alt="Image" class="img-fluid">
+								<img src="img/3-removebg-preview.png" alt="Image" class="img-fluid">
 							</div>
 							<div class="pt-3">
 								<h3>Intuitiva</h3>
@@ -321,103 +323,10 @@
 		</div>
 		<!-- End Popular Product -->
 
-		<!-- Start Testimonial Slider -->
-		<div class="testimonial-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-7 mx-auto text-center">
-						<h2 class="section-title">Testimonios</h2>
-					</div>
-				</div>
 
-				<div class="row justify-content-center">
-					<div class="col-lg-12">
-						<div class="testimonial-slider-wrap text-center">
 
-							<div id="testimonial-nav">
-								<span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
-								<span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
-							</div>
+		
 
-							<div class="testimonial-slider">
-								
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;"¡Increíble experiencia con esta aplicación de reservas de canchas! Como aficionado al fútbol, siempre busco lugares de calidad para jugar con mis amigos. Esta aplicación no solo me facilita encontrar canchas cerca de mí, sino que también me brinda la conveniencia de reservar en línea en cuestión de segundos. Las instalaciones son excelentes, las canchas están en perfecto estado y el proceso de reserva es súper sencillo. ¡Definitivamente la recomiendo a todos los amantes del deporte!"&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Maria Jones</h3>
-													<span class="position d-block mb-3">Usuario</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;"Desde que empecé a usar la app de reservas de canchas, ha sido mucho más fácil organizar partidos con mis amigos. La interfaz es intuitiva y siempre encontramos disponibilidad en las mejores canchas de la ciudad. ¡Muy recomendable!"&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person_2.jpg" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Cesar jaramillo</h3>
-													<span class="position d-block mb-3">Usuario</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-								<div class="item">
-									<div class="row justify-content-center">
-										<div class="col-lg-8 mx-auto">
-
-											<div class="testimonial-block text-center">
-												<blockquote class="mb-5">
-													<p>&ldquo;"Antes era un dolor de cabeza encontrar y reservar canchas sintéticas, pero con esta app todo es mucho más sencillo. Me encanta que puedo ver las reseñas de otros usuarios y elegir la cancha que mejor se ajuste a nuestras necesidades."&rdquo;</p>
-												</blockquote>
-
-												<div class="author-info">
-													<div class="author-pic">
-														<img src="images/person_3.jpg" alt="Maria Jones" class="img-fluid">
-													</div>
-													<h3 class="font-weight-bold">Oscar</h3>
-													<span class="position d-block mb-3">Usuario</span>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</div> 
-								<!-- END item -->
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Testimonial Slider -->
 
 		<!-- Start Blog Section -->
 		
@@ -472,7 +381,7 @@
 							<ul class="list-unstyled">
 							  <li><a href="#">Acerca de Nosotros</a></li>
 							  <li><a href="#">Servicios</a></li>
-							  <li><a href="#">Blog</a></li>
+					
 							  <li><a href="#">Contacto</a></li>
 							</ul>
 						  </div>
@@ -519,7 +428,9 @@
 		<script src="js/custom.js"></script>
 
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
- 
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
 		
 	</body>
 
