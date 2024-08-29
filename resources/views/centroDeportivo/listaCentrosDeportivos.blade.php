@@ -74,7 +74,7 @@
                     <i class="text-muted fa fa-star"></i>
                   </li>
                 </ul>
-                <a href="{{ route('canchas.listar', ['id' => $centroDeportivo->id]) }}" class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
+                <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}" class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
                 <p class="card-text">
                   Dirección: {{ $centroDeportivo->direccion }}<br>
                   Teléfono: {{ $centroDeportivo->telefono }}<br>

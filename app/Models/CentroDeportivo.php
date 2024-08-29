@@ -23,4 +23,11 @@ class CentroDeportivo extends Model
         return $this->hasMany('App\Models\Cancha');
     }
 
+    public function horariocentrodeportivo(){
+        return $this->hasMany('App\Models\HorarioCentroDeportivo');
+    }
+
+    public function municipio(){
+        return $this-> belongsTo('App\Models\Municipio');
+    }
 }

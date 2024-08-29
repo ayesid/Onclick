@@ -10,8 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('centro_deportivos', function (Blueprint $table) {
-            $table->id();
-            
+            $table->id();   
             $table->string('nombre');
             $table->string('direccion')->unique(); // Campo para correo electrónico, único
             $table->string('telefono')->nullable(); // Campo para número de teléfono (puede ser nulo)
@@ -20,6 +19,13 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->string('ubicacion')->nullable();
             $table->enum('parqueadero', ['si', 'no'])->nullable();
+            $table->unsignedBigInteger('municipio_id')->nullable(); 
+
+            $table->foreign('municipio_id') 
+                ->references('id')
+                ->on('municipios')
+                ->onDelete('set null')
+                ->onUpdate('set null');
             $table->timestamps();
 
             

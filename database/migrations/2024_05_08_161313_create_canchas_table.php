@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('imagen')->nullable(); // Campo para la ubicación de la imagen (puede ser nulo)
             $table->string('descripcion');
             
-            $table->unsignedBigInteger('centro_deportivo_id'); // Cambiado 'CeDe_id' por 'centro_deportivo_id'
+            $table->unsignedBigInteger('centro_deportivo_id')->nullable(); // Cambiado 'CeDe_id' por 'centro_deportivo_id'
 
             $table->foreign('centro_deportivo_id') // Cambiado 'CeDe_id' por 'centro_deportivo_id'
                 ->references('id')
