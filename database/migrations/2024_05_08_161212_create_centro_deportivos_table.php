@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('numero_canchas');
             $table->string('imagen')->nullable();
             $table->text('descripcion')->nullable();
-            $table->string('ubicacion')->nullable();
             $table->enum('parqueadero', ['si', 'no'])->nullable();
             $table->unsignedBigInteger('municipio_id')->nullable(); 
 

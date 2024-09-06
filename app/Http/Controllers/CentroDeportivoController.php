@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\centroDeportivo;
 use App\Models\CentroDeportivo as ModelsCentroDeportivo;
+use App\Models\Municipio;
 use Illuminate\Http\Request;
 
 class CentroDeportivoController extends Controller
@@ -22,7 +23,9 @@ class CentroDeportivoController extends Controller
      */
     public function create()
     {
-        return view('centroDeportivo.create');
+        $municipios = Municipio::all(); // Obtiene todos los municipios
+        return view('centroDeportivo.create', compact('municipios')); // Pasa los municipios a la vista
+
     }
 
     /**

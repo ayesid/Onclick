@@ -50,8 +50,9 @@
     <h2>Crear Canchas</h2>
     <form action="{{ route('canchas.store') }}" method="post" enctype="multipart/form-data">
       @csrf
-     
-
+    
+      <input type="hidden" id="centro_deportivo_id" name="centro_deportivo_id" value="{{ $centroDeportivo->id }}">
+    
       <div class="mb-3">
         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de cancha" required>
       </div>
@@ -67,15 +68,9 @@
       <div class="mb-3">
         <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción"></textarea>
       </div>
-      <div class="mb-3">
-        <input type="number" id="centro_deportivo_id" name="centro_deportivo_id" class="form-control" placeholder="Centro deportivo" required>
-      </div>
-     
       <button type="submit" class="btn btn-primary">Guardar datos</button>
-      
-
     </form>
-  </div>
+    
   
 
   <!-- Start Footer Section -->

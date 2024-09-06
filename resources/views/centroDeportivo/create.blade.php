@@ -69,8 +69,14 @@
         <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción"></textarea>
       </div>
       <div class="mb-3">
-        <input type="text" id="ubicacion" name="ubicacion" class="form-control" placeholder="Ubicacion" required>
-      </div>
+        <label for="municipio_id">Ubicación</label>
+        <select id="municipio_id" name="municipio_id" class="form-select" required>
+            <option value="">Seleccione un municipio</option>
+            @foreach ($municipios as $municipio)
+                <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+            @endforeach
+        </select>
+    </div>
       <div class="mb-3">
         <label for="parqueadero">¿Hay parqueadero disponible?</label>
         <select id="parqueadero" name="parqueadero" class="form-select" required>

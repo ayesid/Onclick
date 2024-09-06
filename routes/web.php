@@ -23,7 +23,8 @@ Route::get('centroDeportivo/{centroDeportivo}/editar', [CentroDeportivoControlle
 
 Route::get('canchas/{centro_deportivo_id}', [CanchaController::class, 'listaCancha'])->name('canchas.listar');
 Route::get('canchas/create/{centro_deportivo_id}', [CanchaController::class, 'create'])->name('canchas.create');
-Route::post('canchas/store', [CanchaController::class, 'store'])->name('canchas.store');
+Route::post('/canchas/store', [CanchaController::class, 'store'])->name('canchas.store');
+
 Route::get('canchas/{cancha}', [CanchaController::class, 'show'])->name('canchas.show');
 Route::put('canchas/{cancha}', [CanchaController::class, 'update'])->name('canchas.update');
 Route::delete('canchas/{cancha}', [CanchaController::class, 'destroy'])->name('canchas.destroy');

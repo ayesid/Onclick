@@ -35,12 +35,17 @@ class CanchaController extends Controller
 
 
 
-
     public function store(Request $request)
     {
         $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'required|string|max:20',
+            'precio' => 'required|numeric|min:0',
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'descripcion' => 'nullable|string',
+            'centro_deportivo_id' => 'required|exists:centro_deportivos,id',
         ]);
+    
         $cancha = new Cancha();
         $cancha->nombre = $request->nombre;
         $cancha->telefono = $request->telefono;
@@ -55,10 +60,10 @@ class CanchaController extends Controller
     
         $cancha->descripcion = $request->descripcion;
         $cancha->centro_deportivo_id = $request->centro_deportivo_id;
-        // Guardar el objeto en la base de datos
+        
         $cancha->save();
-        // Redireccionar con un mensaje de éxito
-        return redirect()->back()->with('success', 'Centro deportivo creado con éxito.');
+    
+        return redirect()->back()->with('success', 'Cancha creada con éxito.');
     }
     
     
