@@ -16,12 +16,12 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"		
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">		
+		
+	
 		
 
-		
-
-	</head>
+</head>
 
 	<body>
 
@@ -44,19 +44,26 @@
           <li><a class="nav-link" href="{{route('Contactanos')}}">Contactanos</a></li>
         </ul>
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href="#"><img src="/images/user.svg"></a></li>
-          <li><a class="nav-link" href="cart.html"><img src="/images/cart.svg"></a></li>
+          
+          <li><a class="nav-link" href=""><img src="{{asset('images/cart.svg')}}"></a></li>
+		  <div class="nav-link">
+		  		<form method="POST" action="{{ route('logout') }}">
+					@csrf
+	
+					<x-dropdown-link :href="route('logout')"
+						onclick="event.preventDefault();
+								this.closest('form').submit();">
+								{{ ('Cerrar Sesion') }}
+					</x-dropdown-link>
+				</form>
+			</div>
         </ul>
       </div>
     </div>
   </nav>
   <!-- End Header/Navigation -->
 
-		
 
-
-		<!-- Start Hero Section -->
-		<!-- comienza el carrusel Banner Hero -->
 		<!-- comienza el carrusel Banner Hero -->
 		<div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
 			<ol class="carousel-indicators">

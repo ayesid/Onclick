@@ -43,8 +43,18 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link" href=""><img src="images/cart.svg"></a></li>
+						<div class="nav-link">
+							<form method="POST" action="{{ route('logout') }}">
+							  @csrf
+			  
+							  <x-dropdown-link :href="route('logout')"
+								  onclick="event.preventDefault();
+										  this.closest('form').submit();">
+										  {{ ('Cerrar Sesion') }}
+							  </x-dropdown-link>
+						  </form>
+					  </div>
 					</ul>
 				</div>
 			</div>
