@@ -46,11 +46,10 @@
             <form method="POST" action="{{ route('logout') }}">
             @csrf
     
-            <x-dropdown-link :href="route('logout')"
-              onclick="event.preventDefault();
-                  this.closest('form').submit();">
-                  {{ ('Cerrar Sesion') }}
-            </x-dropdown-link>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="btn btn-link">Cerrar Sesión</button>
+            </form>
           </form>
         </div>
         </ul>
@@ -73,7 +72,7 @@
         </div>
         <div class="col-lg-7">
           <div class="hero-img-wrap">
-            <img src="img/5-removebg-preview.png" class="img-fluid" alt="Imagen destacada" width="550px">
+            <img src="{{asset('img/5-removebg-preview.png')}}" class="img-fluid" alt="Imagen destacada" width="550px">
           </div>
         </div>
       </div>
@@ -175,31 +174,15 @@
 	<div class="container relative">
 
 		<div class="sofa-img">
-			<img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
+			<img src="{{asset('img/dosjuga-removebg-preview.png')}}" alt="Image" class="img-fluid">
 		</div>
 
-		<div class="row">
-			<div class="col-lg-8">
-			  <div class="subscription-form">
-				<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
-	
-				<form action="#" class="row g-3">
-				  <div class="col-auto">
-					<input type="text" class="form-control" placeholder="Ingresa tu correo">
-				  </div>
-				  <div class="col-auto">
-					<button class="btn btn-primary">Subscríbete</button>
-				  </div>
-				</form>
-	
-			  </div>
-			</div>
-		  </div>
+		
 
 		<div class="row g-5 mb-5">
 			<div class="col-lg-4">
 				<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Onclick<span><div class="hero-img-wrap">
-					<img src="img/logo-removebg-preview.png " class="img-fluid" style="width: 100px;">
+					<img src="{{asset('img/logo-removebg-preview.png')}} " class="img-fluid" style="width: 100px;">
 	
 				</div></span></a>
 			</div>
