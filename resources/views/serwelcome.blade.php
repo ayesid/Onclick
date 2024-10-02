@@ -34,38 +34,13 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                        <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
+						<li><a class="nav-link" href="{{ route('homes') }}">Inicio</a></li>
+                        <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros deportivos</a></li>
 
-						<li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
-						<li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-					</ul>
+						<li><a class="nav-link" href="{{route('nowelcome')}}">Acerca de nosotros</a></li>
+						<li><a class="nav-link" href="{{route('seservicios')}}">Servicios</a></li>
+                        <li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
 
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-<<<<<<< HEAD
-						<li><a class="nav-link" href="cart.html"><img src="{{asset('images/cart.svg')}}"></a></li>
-						<div class="nav-link">
-							<form method="POST" action="{{ route('logout') }}">
-								@csrf
-	
-								  <button type="submit" class=" btn btn-link" style="text-decoration: none;">
-									{{ __('Cerrar Sesión') }}
-								</button>
-	
-							</form>
-					  </div>
-=======
-
-						<li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
-						<div class="nav-link">
-							<form method="POST" action="{{ route('logout') }}">
-								@csrf
-								<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
-									{{ __('Cerrar Sesión') }}
-								</button>
-							</form>
-						</div>
->>>>>>> 3b4c93693a9b8582ce48954c1d50717ea5b16bd4
 					</ul>
 				</div>
 			</div>
@@ -80,13 +55,13 @@
 						<div class="col-lg-5">
 							<div class="intro-excerpt">
 								<h1>Servicios</h1>
-								<p class="mb-4">En la aplicación Onclick, ofrecemos una variedad de servicios diseñados para facilitar la reserva y gestión de canchas deportivas, brindando una experiencia completa y conveniente para nuestros usuarios.</p>
+								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
 								<p><a href="CentrosDeportivos.html" class="btn btn-secondary me-2">Reserva tu cancha</a><a href="index.html" class="btn btn-white-outline">Explorar</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-								<img src="{{asset('img/8-removebg-preview.png')}}" class="img-fluid" width="720px">
+								<img src="img/8-removebg-preview.png" class="img-fluid" width="720px">
 							</div>
 						</div>
 					</div>
@@ -105,7 +80,7 @@
 					<div class="col-6 col-md-6 col-lg-3 mb-4">
 						<div class="feature">
 							<div class="icon">
-								<img src="{{asset('images/truck.svg')}}" alt="Image" class="imf-fluid">
+								<img src="images/truck.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Reservar  cancha con sus accesorios </h3>
 							<p> Ofrecer la posibilidad de alquilar la cancha con su balon, petos, y otros accesorios deportivos directamente desde la app. </p>
@@ -115,7 +90,7 @@
 					<div class="col-6 col-md-6 col-lg-3 mb-4">
 						<div class="feature">
 							<div class="icon">
-								<img src="{{asset('images/bag.svg')}}" alt="Image" class="imf-fluid">
+								<img src="images/bag.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Organización de Torneos </h3>
 							<p>Crear una función para organizar torneos entre usuarios de la app, incluyendo un sistema de gestión de equipos, horarios y resultados.</p>
@@ -125,7 +100,7 @@
 					<div class="col-6 col-md-6 col-lg-3 mb-4">
 						<div class="feature">
 							<div class="icon">
-								<img src="{{asset('images/support.svg')}}" alt="Image" class="imf-fluid">
+								<img src="images/support.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Promociones y Descuentos:</h3>
 							<p>Ofrecer descuentos por reservas recurrentes o por reservas en horarios de menor demanda.</p>
@@ -135,7 +110,7 @@
 					<div class="col-6 col-md-6 col-lg-3 mb-4">
 						<div class="feature">
 							<div class="icon">
-								<img src="{{asset('images/return.svg')}}" alt="Image" class="imf-fluid">
+								<img src="images/return.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Notificaciones y Recordatorios:</h3>
 							<p>Enviar notificaciones para recordar a los usuarios sus próximas reservas o cuando haya promociones disponibles.</p>
@@ -145,7 +120,7 @@
 					<div class="col-6 col-md-6 col-lg-3 mb-4">
 						<div class="feature">
 							<div class="icon">
-								<img src="{{asset('images/truck.svg')}}" alt="Image" class="imf-fluid">
+								<img src="images/truck.svg" alt="Image" class="imf-fluid">
 							</div>
 							<h3>Historial de Reservas</h3>
 							<p>Un historial donde los usuarios puedan ver todas las reservas pasadas y futuras.</p>
@@ -176,7 +151,7 @@
 					<!-- Start Column 2 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 						<a class="product-item" href="cart.html">
-							<img src="{{asset('img/promocion1.jpg')}}" class="img-fluid product-thumbnail">
+							<img src="img/promocion1.jpg" class="img-fluid product-thumbnail">
 							<h3 class="product-title">Promo 1</h3>
 							<strong class="product-price">$50%</strong>
 
@@ -190,7 +165,7 @@
 					<!-- Start Column 3 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 						<a class="product-item" href="cart.html">
-							<img src="{{asset('img/promo2.jpg')}}" class="img-fluid product-thumbnail">
+							<img src="img/promo2.jpg" class="img-fluid product-thumbnail">
 							<h3 class="product-title">Promo 2</h3>
 							<strong class="product-price"> Puntos</strong>
 
@@ -204,12 +179,12 @@
 					<!-- Start Column 4 -->
 					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 						<a class="product-item" href="cart.html">
-							<img src="{{asset('img/promo3.jpg')}}" class="img-fluid product-thumbnail">
+							<img src="img/promo3.jpg" class="img-fluid product-thumbnail">
 							<h3 class="product-title">Promo 3</h3>
 							<strong class="product-price">Cliente del mes</strong>
 
 							<span class="icon-cross">
-								<img src="{{asset('images/cross.svg')}}" class="img-fluid">
+								<img src="images/cross.svg" class="img-fluid">
 							</span>
 						</a>
 					</div>
@@ -232,7 +207,23 @@
 					<img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
 				</div>
 
-				
+				<div class="row">
+					<div class="col-lg-8">
+					  <div class="subscription-form">
+						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
+			
+						<form action="#" class="row g-3">
+						  <div class="col-auto">
+							<input type="text" class="form-control" placeholder="Ingresa tu correo">
+						  </div>
+						  <div class="col-auto">
+							<button class="btn btn-primary">Subscríbete</button>
+						  </div>
+						</form>
+			
+					  </div>
+					</div>
+				  </div>
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">

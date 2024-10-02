@@ -25,27 +25,24 @@
 
 <body>
 
-    <!-- Start Header/Navigation -->
-    <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-        <div class="container">
-            <div class="hero-img-wrap">
-                <img src="img/logo-removebg-preview.png" class="img-fluid" style="width: 100px;">
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni"
-                aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsFurni">
-                <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                    <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                    <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros Deportivos</a></li>
-
-                    <li><a class="nav-link" href="{{ route('Nosotros') }}">Acerca De Nosotros</a></li>
-                    <li><a class="nav-link" href="{{ route('Servicios') }}">Servicios</a></li>
-					<li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
-
-                </ul>
-                
+		<!-- Start Header/Navigation -->
+  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+    <div class="container">
+      <div class="hero-img-wrap">
+        <img src="{{ asset('img/logo-removebg-preview.png') }}" class="img-fluid" style="width: 100px;">
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarsFurni">
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0">
+          <li><a class="nav-link" href="{{ route('homes') }}">Inicio</a></li>
+          <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros Deportivos</a></li>
+          <li><a class="nav-link" href="{{route('nowelcome')}}">Acerca De Nosotros</a></li>
+          <li><a class="nav-link" href="{{route('seservicios')}}">Servicios</a></li>
+          
+          <li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
+          {{-- <li><a class="nav-link" href="{{ route('register') }}">Registrate</a></li> --}}
         </ul>
       </div>
       

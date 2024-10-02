@@ -11,6 +11,15 @@ class CentroDeportivoController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function listaCentrosDeportivosWelcome()
+     {
+        $centrosDeportivos = CentroDeportivo::all();
+         return view('listaCentrosDeportivosWelcome', compact('centrosDeportivos'));
+     }
+
+
+
     public function listaCentrosDeportivos()
     {
         $centrosDeportivos = CentroDeportivo::all();

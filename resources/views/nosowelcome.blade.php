@@ -34,36 +34,14 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                        <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                        <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
+                        <li><a class="nav-link" href="{{ route('homes') }}">Inicio</a></li>
+                        <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros deportivos</a></li>
 
-						<li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
-						<li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
+						<li><a class="nav-link" href="{{route('nowelcome')}}">Acerca de nosotros</a></li>
+						<li><a class="nav-link" href="{{route('seservicios')}}">Servicios</a></li>
+						<li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
 					</ul>
 
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-
-						<li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
-						<div class="nav-link">
-							<form method="POST" action="{{ route('logout') }}">
-								@csrf
-<<<<<<< HEAD
-	
-								  <button type="submit" class=" btn btn-link" style="text-decoration: none;">
-									{{ __('Cerrar Sesión') }}
-								</button>
-	
-							</form>
-					  </div>
-					</ul>
-=======
-								<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
-									{{ __('Cerrar Sesión') }}
-								</button>
-							</form>
-						</div>
-					</ul>	
->>>>>>> 3b4c93693a9b8582ce48954c1d50717ea5b16bd4
 				</div>
 			</div>
 				
@@ -156,7 +134,7 @@
 
 					<!-- Start Column 2 -->
 					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/user.svg" class="img-fluid mb-5 bg-black">
+						<img src="images/yesid.jpg" class="img-fluid mb-5">
 
 						<h3 clas><a href="#"><span class="">Yesid arroyo</span> sanchez</a></h3>
             <span class="d-block position mb-4">Desarrollador de software</span>
@@ -167,7 +145,7 @@
 
 					<!-- Start Column 3 -->
 					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/user.svg" class="img-fluid mb-5 bg-black">
+						<img src="images/heider.webp" class="img-fluid mb-5">
 						<h3 clas><a href="#"><span class="">Heider palmett</a></h3>
             <span class="d-block position mb-4">Documentador </span>
             <p>Estudiante del tecnologo en Analisis y desarrollo de sofware del sena</p>
@@ -176,7 +154,7 @@
 
 					<!-- Start Column 4 -->
 					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/user.svg" class="img-fluid mb-5 bg-black" >
+						<img src="images/yesid.jpg" class="img-fluid mb-5">
 
 						<h3 clas><a href="#"><span class="">Nelson cerrano </span> alba</a></h3>
             <span class="d-block position mb-4">Desarrollador de software</span>
@@ -204,6 +182,23 @@
 					<img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
 				</div>
 
+				<div class="row">
+					<div class="col-lg-8">
+					  <div class="subscription-form">
+						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
+			
+						<form action="#" class="row g-3">
+						  <div class="col-auto">
+							<input type="text" class="form-control" placeholder="Ingresa tu correo">
+						  </div>
+						  <div class="col-auto">
+							<button class="btn btn-primary">Subscríbete</button>
+						  </div>
+						</form>
+			
+					  </div>
+					</div>
+				  </div>
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
