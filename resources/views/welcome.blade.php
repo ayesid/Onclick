@@ -35,12 +35,10 @@
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="navbarsFurni">
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0">
-          <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-          <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros Deportivos</a></li>
-
-          <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca De Nosotros</a></li>
-          <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-          <li><a class="nav-link" href="{{route('Contactanos')}}">Contactanos</a></li>
+          <li><a class="nav-link" href="{{ route('homes') }}">Inicio</a></li>
+          <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros Deportivos</a></li>
+          <li><a class="nav-link" href="{{route('nowelcome')}}">Acerca De Nosotros</a></li>
+          <li><a class="nav-link" href="{{route('seservicios')}}">Servicios</a></li>
           
           <li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
           {{-- <li><a class="nav-link" href="{{ route('register') }}">Registrate</a></li> --}}

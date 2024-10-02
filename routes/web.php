@@ -4,6 +4,7 @@ use App\Http\Controllers\CanchaController;
 use App\Http\Controllers\CentroDeportivoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Models\CentroDeportivo;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,13 +21,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('home', [HomeController::class, 'home'])->name('home');
+Route::get('homes', [HomeController::class, 'homes'])->name('homes');
 Route::post('home', [HomeController::class, 'home'])->name('home');
-
+Route::get('home', [HomeController::class, 'home'])->name('home');
 Route::get('Nosotros', [HomeController::class, 'Nosotros'])->name('Nosotros');
+route::get('nowelcome',[HomeController::class, 'nowelcome'])->name('nowelcome');
 Route::get('Servicios', [HomeController::class, 'Servicios'])->name('Servicios');
-Route::get('Contactanos', [HomeController::class, 'Contactanos'])->name('Contactanos');
+Route::get('Serwelcome', [HomeController::class, 'seservicios'])->name('seservicios');
+Route::get('centroDeportivo/listarwel', [CentroDeportivoController::class, 'listaCentrosDeportivosWelcome'])->name('listaCentrosDeportivosWelcome');
 
+
+ 
 
 Route::get('centroDeportivo/listar', [CentroDeportivoController::class, 'listaCentrosDeportivos'])->name('centroDeportivo.listar');
 Route::get('centroDeportivo/create', [CentroDeportivoController::class, 'create']);

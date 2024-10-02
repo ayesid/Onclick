@@ -11,6 +11,15 @@ class CentroDeportivoController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function listaCentrosDeportivosWelcome()
+     {
+        $centrosDeportivos = CentroDeportivo::all();
+         return view('listaCentrosDeportivosWelcome', compact('centrosDeportivos'));
+     }
+
+
+
     public function listaCentrosDeportivos()
     {
         $centrosDeportivos = CentroDeportivo::all();
@@ -53,7 +62,6 @@ class CentroDeportivoController extends Controller
         }
     
         $centrosDeportivo->descripcion = $request->descripcion;
-        $centrosDeportivo->ubicacion = $request->ubicacion;
         $centrosDeportivo->parqueadero = $request->parqueadero;
     
         // Guardar el objeto en la base de datos

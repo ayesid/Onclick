@@ -39,23 +39,20 @@
 
 						<li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
 						<li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-						<li><a class="nav-link" href="{{route('Contactanos')}}">Contactanos</a></li>
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href=""><img src="images/cart.svg"></a></li>
+
+						<li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
 						<div class="nav-link">
 							<form method="POST" action="{{ route('logout') }}">
-							  @csrf
-			  
-							  <x-dropdown-link :href="route('logout')"
-								  onclick="event.preventDefault();
-										  this.closest('form').submit();">
-										  {{ ('Cerrar Sesion') }}
-							  </x-dropdown-link>
-						  </form>
-					  </div>
-					</ul>
+								@csrf
+								<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
+									{{ __('Cerrar Sesión') }}
+								</button>
+							</form>
+						</div>
+					</ul>	
 				</div>
 			</div>
 				

@@ -15,7 +15,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-		<title>Servicios</title>
+		<title>Nosotros </title>
 	</head>
 
 	<body>
@@ -25,7 +25,7 @@
 
 			<div class="container" >
 				<div class="hero-img-wrap">
-					
+					<img src="img/logo_sinfondo.png" class="img-fluid" style="width: 100px;">
 				</div>
 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,25 +34,14 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                        <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
+                        <li><a class="nav-link" href="{{ route('homes') }}">Inicio</a></li>
+                        <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros deportivos</a></li>
 
-						<li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
-						<li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
+						<li><a class="nav-link" href="{{route('nowelcome')}}">Acerca de nosotros</a></li>
+						<li><a class="nav-link" href="{{route('seservicios')}}">Servicios</a></li>
+						<li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
 					</ul>
 
-					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-
-						<li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
-						<div class="nav-link">
-							<form method="POST" action="{{ route('logout') }}">
-								@csrf
-								<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
-									{{ __('Cerrar Sesión') }}
-								</button>
-							</form>
-						</div>
-					</ul>
 				</div>
 			</div>
 				
@@ -64,20 +53,20 @@
 				<div class="container">
 					<div class="row justify-content-between">
 						<div class="col-lg-5">
-							<div class="intro-excerpt">
-								<h1>Servicios</h1>
-								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
-								<p><a href="CentrosDeportivos.html" class="btn btn-secondary me-2">Reserva tu cancha</a><a href="index.html" class="btn btn-white-outline">Explorar</a></p>
+							<div class="intro-excerpt ">
+								<h1>Acerca de nosotros</h1>
+								<p class="mb-4">Nuestra aplicación está diseñada por estudiantes del tecnologo de analisis y desarrolo de sotfwrae del sena </p>
+								<p><a href="{{route('centroDeportivo.listar')}}" class="btn btn-secondary me-2">Reservar</a><a href="{{route('home')}}" class="btn btn-white-outline">Inicio</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
 							<div class="hero-img-wrap">
-								<img src="img/8-removebg-preview.png" class="img-fluid" width="720px">
+								<img src="img/1-removebg-preview.png" class="img-fluid" width="700px"> 
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> <br> <br> <br>
 		<!-- End Hero Section -->
 
 		
@@ -85,130 +74,105 @@
 		<!-- Start Why Choose Us Section -->
 		<div class="why-choose-section">
 			<div class="container">
-				
-				
-				<div class="row my-5">
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/truck.svg" alt="Image" class="imf-fluid">
+				<div class="row justify-content-between align-items-center">
+					<div class="col-lg-6">
+						<h2 class="section-title">Por qué elegirnos </h2>
+						<p>Nuestra aplicación está diseñada para ser intuitiva y fácil de usar tanto para los usuarios que reservan las canchas como para los administradores de las instalaciones</p>
+
+						<div class="row my-5">
+							
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/bag.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>Facil de pagar</h3>
+									<p>Seguro y rapido .</p>
+								</div>
 							</div>
-							<h3>Reservar  cancha con sus accesorios </h3>
-							<p> Ofrecer la posibilidad de alquilar la cancha con su balon, petos, y otros accesorios deportivos directamente desde la app. </p>
+
+							<div class="col-6 col-md-6">
+								<div class="feature">
+									<div class="icon">
+										<img src="images/support.svg" alt="Image" class="imf-fluid">
+									</div>
+									<h3>24/7 </h3>
+									<p>A cualquier hora del dia puedes reservar</p>
+								</div>
+							</div>
+
+							
+
 						</div>
 					</div>
 
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/bag.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Organización de Torneos </h3>
-							<p>Crear una función para organizar torneos entre usuarios de la app, incluyendo un sistema de gestión de equipos, horarios y resultados.</p>
+					<div class="col-lg-5">
+						<div class="img-wrap">
+							<img src="img/1724729894.jpg" alt="Image" class="img-fluid" width="700px" height="700px">
 						</div>
 					</div>
-
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/support.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Promociones y Descuentos:</h3>
-							<p>Ofrecer descuentos por reservas recurrentes o por reservas en horarios de menor demanda.</p>
-						</div>
-					</div>
-
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/return.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Notificaciones y Recordatorios:</h3>
-							<p>Enviar notificaciones para recordar a los usuarios sus próximas reservas o cuando haya promociones disponibles.</p>
-						</div>
-					</div>
-
-					<div class="col-6 col-md-6 col-lg-3 mb-4">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/truck.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Historial de Reservas</h3>
-							<p>Un historial donde los usuarios puedan ver todas las reservas pasadas y futuras.</p>
-						</div>
-					</div>
-
-					
 
 				</div>
-			
 			</div>
 		</div>
 		<!-- End Why Choose Us Section -->
 
-		<!-- Start Product Section -->
-		<div class="product-section pt-0">
+		<!-- Start Team Section -->
+		<div class="untree_co-section">
 			<div class="container">
+
+				<div class="row mb-5">
+					<div class="col-lg-5 mx-auto text-center">
+						<h1 class="section-title">Nuestro equipo de desarrollo</h1>
+					</div>
+				</div>
+
 				<div class="row">
 
-					<!-- Start Column 1 -->
-					<div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-						<h2 class="mb-4 section-title">Eventos y promociones </h2>
-						<p class="mb-4">Contamos con Canchas Sintèticas para que disfrutes con tu grupo de amigos. Disponibles para alquiler por horas, torneos y eventos en general. </p>
-						<p><a href="CentrosDeportivos.html" class="btn btn-primary">Reservar cancha</a></p>
-					</div> 
-					<!-- End Column 1 -->
+				
 
 					<!-- Start Column 2 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="img/promocion1.jpg" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Promo 1</h3>
-							<strong class="product-price">$50%</strong>
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="images/yesid.jpg" class="img-fluid mb-5">
 
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
+						<h3 clas><a href="#"><span class="">Yesid arroyo</span> sanchez</a></h3>
+            <span class="d-block position mb-4">Desarrollador de software</span>
+            <p>Estudiante del tecnologo en Analisis y desarrollo de sofware del sena</p>
+
 					</div> 
 					<!-- End Column 2 -->
 
 					<!-- Start Column 3 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="img/promo2.jpg" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Promo 2</h3>
-							<strong class="product-price"> Puntos</strong>
-
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="images/heider.webp" class="img-fluid mb-5">
+						<h3 clas><a href="#"><span class="">Heider palmett</a></h3>
+            <span class="d-block position mb-4">Documentador </span>
+            <p>Estudiante del tecnologo en Analisis y desarrollo de sofware del sena</p>
+					</div> 
 					<!-- End Column 3 -->
 
 					<!-- Start Column 4 -->
-					<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-						<a class="product-item" href="cart.html">
-							<img src="img/promo3.jpg" class="img-fluid product-thumbnail">
-							<h3 class="product-title">Promo 3</h3>
-							<strong class="product-price">Cliente del mes</strong>
+					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+						<img src="images/yesid.jpg" class="img-fluid mb-5">
 
-							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
-							</span>
-						</a>
-					</div>
+						<h3 clas><a href="#"><span class="">Nelson cerrano </span> alba</a></h3>
+            <span class="d-block position mb-4">Desarrollador de software</span>
+            <p>Estudiante del tecnologo en Analisis y desarrollo de sofware del sena</p>
+
+          
+					</div> 
 					<!-- End Column 4 -->
+
+					
 
 				</div>
 			</div>
 		</div>
-		<!-- End Product Section -->
+		<!-- End Team Section -->
 
 		
 
-		
 
 		<!-- Start Footer Section -->
 		<footer class="footer-section bg-gradient" >
@@ -259,6 +223,7 @@
 							<ul class="list-unstyled">
 							  <li><a href="#">Acerca de Nosotros</a></li>
 							  <li><a href="#">Servicios</a></li>
+							  <li><a href="#">Blog</a></li>
 							  <li><a href="#">Contacto</a></li>
 							</ul>
 						  </div>
