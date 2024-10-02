@@ -21,9 +21,7 @@ class HomeController extends Controller
     public function Servicios(){
     return view('onclick.nosotros.servicios');
     }
-    public function Contactanos(){
-        return view('onclick.nosotros.contactanos');
-        }
+  
 
 
    public function Bombonera(){
