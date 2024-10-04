@@ -18,47 +18,18 @@
 
 <body>
   <!-- Start Header/Navigation -->
-  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-    <div class="container">
-      <div class="hero-img-wrap">
-        <img src="{{asset('img/logo-removebg-preview.png')}}" class="img-fluid" style="width: 100px;">
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsFurni">
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-          <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
-
-          <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
-          <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-         
-        </ul>
-        
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href=""><img src="{{asset('images/cart.svg')}}"></a></li>
-          <div class="nav-link">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                  <button type="submit" class=" btn btn-link" style="text-decoration: none;">
-                        {{ __('Cerrar Sesión') }}
-                 </button>
-
-            </form>
-        </div>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
   <!-- End Header/Navigation -->
 
   <div class="container py-5">
     <h2>Crear Canchas</h2>
     <form action="{{ route('canchas.store') }}" method="post" enctype="multipart/form-data">
       @csrf
-    
+      
+      <div class="mb-3">
+        <input type="file" name="imagen" accept="image/*" id="imagen" class="form-control">
+      </div>
+
       <input type="hidden" id="centro_deportivo_id" name="centro_deportivo_id" value="{{ $centroDeportivo->id }}">
     
       <div class="mb-3">
@@ -68,9 +39,7 @@
       <div class="mb-3">
         <input type="number" id="precio" name="precio" class="form-control" placeholder="Precio $" min="0" required>
       </div>
-      <div class="mb-3">
-        <input type="file" name="imagen" accept="image/*" id="imagen" class="form-control">
-      </div>
+     
       <div class="mb-3">
         <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción"></textarea>
       </div>
@@ -87,79 +56,94 @@
       <button type="submit" class="btn btn-primary">Guardar datos</button>
     </form>
     
-  
+  <br>
+  <br>
 
   <!-- Start Footer Section -->
-  <footer class="footer-section bg-gradient" >
+  <footer class="footer-section bg-gradient">
     <div class="container relative">
 
-      <div class="sofa-img">
-        <img src="{{asset('img/dosjuga-removebg-preview.png')}}" alt="Image" class="img-fluid">
-      </div>
-
-      
-      <div class="row g-5 mb-5">
-        <div class="col-lg-4">
-          <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Onclick<span><div class="hero-img-wrap">
-            <img src="{{asset('img/logo-removebg-preview.png')}} " class="img-fluid" style="width: 100px;">
-    
-          </div></span></a>
-        </div>
-        <p>Tu mejor opción para reservar canchas sintéticas en Popayán. Fácil, rápido y conveniente.</p>
-
-          <ul class="list-unstyled custom-social">
-            <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-            <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
-            <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-            <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
-          </ul>
+        <div class="sofa-img">
+            <img src="{{asset('img/dosjuga-removebg-preview.png')}}" alt="Image" class="img-fluid">
         </div>
 
-        <div class="col-lg-8">
-          <div class="row links-wrap">
-            <div class="col-6 col-sm-6 col-md-3">
-            <ul class="list-unstyled">
-              <li><a href="#">Acerca de Nosotros</a></li>
-              <li><a href="#">Servicios</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contacto</a></li>
-            </ul>
+        
+
+        <div class="row g-5 mb-5">
+            <div class="col-lg-4">
+                <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Onclick<span>
+                            <div class="hero-img-wrap">
+                                <img src="{{asset('img/logo-removebg-preview.png')}} " class="img-fluid"
+                                    style="width: 100px;">
+
+                            </div>
+                        </span></a>
+                </div>
+                <p>Tu mejor opción para reservar canchas sintéticas en Popayán. Fácil, rápido y conveniente.</p>
+
+                <ul class="list-unstyled custom-social">
+                    <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
+                    <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+                    <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+                    <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
+                </ul>
             </div>
-      
-            <div class="col-6 col-sm-6 col-md-3">
-            <ul class="list-unstyled">
-              <li><a href="#">Términos y Condiciones</a></li>
-              <li><a href="#">Política de Privacidad</a></li>
-              <li><a href="#">Soporte</a></li>
-            </ul>
+
+            <div class="col-lg-8">
+                <div class="row links-wrap">
+                    <div class="col-6 col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Acerca de Nosotros</a></li>
+                            <li><a href="#">Servicios</a></li>
+
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-sm-6 col-md-3">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Términos y Condiciones</a></li>
+                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#">Soporte</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
-          </div>
 
-      </div>
-
-      <div class="border-top copyright">
-        <div class="row pt-4">
-          <div class="col-lg-6">
-          <p class="mb-2 text-center text-lg-start">© 2024 Onclick Reservas. Todos los derechos reservados.</p>
-          </div>
-    
-          <div class="col-lg-6 text-center text-lg-end">
-          <ul class="list-unstyled d-inline-flex ms-auto">
-            <li class="me-4"><a href="#">Términos</a></li>
-            <li class="me-4"><a href="#">Privacidad</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
-          </div>
         </div>
+
+        <div class="border-top copyright">
+            <div class="row pt-4">
+                <div class="col-lg-6">
+                    <p class="mb-2 text-center text-lg-start">© 2024 Onclick Reservas. Todos los derechos
+                        reservados.</p>
+                </div>
+
+                <div class="col-lg-6 text-center text-lg-end">
+                    <ul class="list-unstyled d-inline-flex ms-auto">
+                        <li class="me-4"><a href="#">Términos</a></li>
+                        <li class="me-4"><a href="#">Privacidad</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
     </div>
-  </footer>
+</footer>
   <!-- End Footer Section -->
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('js/tiny-slider.js') }}"></script>
+  <script src="{{ asset('js/custom.js') }}"></script>
+
 
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/tiny-slider.js"></script>
   <script src="js/custom.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
 </html>

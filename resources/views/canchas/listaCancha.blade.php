@@ -33,7 +33,7 @@
           <li><a class="nav-link" href="{{ route('Servicios') }}">Servicios</a></li>
         </ul>
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href="#"><img src="{{ asset('images/cart.svg') }}" alt="Cart"></a></li>
+          <li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{ asset('images/cart.svg') }}" alt="Cart"></a></li>
           <li>
             <form method="POST" action="{{ route('logout') }}">
               @csrf
@@ -64,38 +64,42 @@
       </div>
       <h3>Canchas Sintéticas</h3>
 <a class="btn btn-primary" href="{{ route('canchas.create', ['centro_deportivo_id' => $centroDeportivo->id]) }}" role="button">Crear Cancha</a>
-      <div class="row mt-4">
-        @foreach ($canchas as $cancha)
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100">
-              <a href="#">
-                <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300" height="300">
-              </a>
-              <div class="card-body">
-                <ul class="list-unstyled d-flex justify-content-between">
-                  <li>
-                    <i class="text-warning fa fa-star"></i>
-                    <i class="text-warning fa fa-star"></i>
-                    <i class="text-warning fa fa-star"></i>
-                    <i class="text-muted fa fa-star"></i>
-                    <i class="text-muted fa fa-star"></i>
-                  </li>
-                </ul>
-                <a href="#" class="h4 text-decoration-none text-success">{{ $cancha->nombre }}</a>
-                <p class="card-text">
-                 
-                  Precio: {{ $cancha->precio }}<br>
-                  Descripción: {{ $cancha->descripcion }}<br>
-                  Centro Deportivo: {{ $cancha->centroDeportivo->nombre }}<br>
-                </p>
-                <p class="text-muted">Reviews (24)</p>
-              </div>
-            </div>
-          </div>
-        @endforeach
+<div class="row mt-4">
+  @foreach ($canchas as $cancha)
+    <div class="col-12 col-md-4 mb-4"> <!-- Aquí está la clase col-12 col-md-4 -->
+      <div class="card h-100">
+        <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}">
+          <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300" height="300">
+        </a>
+        <div class="card-body">
+          <ul class="list-unstyled d-flex justify-content-between">
+            <li>
+              <i class="text-warning fa fa-star"></i>
+              <i class="text-warning fa fa-star"></i>
+              <i class="text-warning fa fa-star"></i>
+              <i class="text-muted fa fa-star"></i>
+              <i class="text-muted fa fa-star"></i>
+            </li>
+          </ul>
+          <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}" class="h4 text-decoration-none text-success">{{ $cancha->nombre }}</a>
+          <p class="card-text">
+            Precio: {{ $cancha->precio }}<br>
+            Descripción: {{ $cancha->descripcion }}<br>
+            Centro Deportivo: {{ $cancha->centroDeportivo->nombre }}<br>
+          </p>
+          <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}" >Reservar</a>
+        </div>
       </div>
     </div>
+  @endforeach
+</div>
+
+      </div>
+
+    </div>
+
   </section>
+
 
   <!-- Start Footer Section -->
   <footer class="footer-section bg-gradient">
@@ -103,21 +107,7 @@
       <div class="sofa-img">
         <img src="{{ asset('img/dosjuga-removebg-preview.png') }}" alt="Image" class="img-fluid">
       </div>
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="subscription-form">
-            <h3 class="d-flex align-items-center"><span class="me-1"><img src="{{ asset('images/envelope-outline.svg') }}" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
-            <form action="#" class="row g-3">
-              <div class="col-auto">
-                <input type="text" class="form-control" placeholder="Ingresa tu correo">
-              </div>
-              <div class="col-auto">
-                <button class="btn btn-primary">Subscríbete</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+     
       <div class="row g-5 mb-5">
         <div class="col-lg-4">
           <div class="mb-4 footer-logo-wrap">

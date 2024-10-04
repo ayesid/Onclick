@@ -21,16 +21,6 @@ class HomeController extends Controller
     {
         return view('serwelcome');
     }
-<<<<<<< HEAD
-  
-
-
-   public function Bombonera(){
-        return view('onclick.canchas.bombonera');
-   }
-   public function Cubo(){
-    return view('onclick.canchas.cubo');
-=======
 
     public function home()
     {
@@ -38,7 +28,6 @@ class HomeController extends Controller
             return redirect()->route('login');
         }
         return view('onclick.index');
->>>>>>> 3b4c93693a9b8582ce48954c1d50717ea5b16bd4
     }
 
    

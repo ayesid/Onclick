@@ -45,14 +45,14 @@
                 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 
-                    <li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
+                    <li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{ asset('/images/cart.svg') }}"></a></li>
                     <div class="nav-link">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-							<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
-								{{ __('Cerrar Sesión') }}
-							</button>
-
+                            <button type="submit" class=" btn btn-link" style="text-decoration: none;">
+                                {{ __('Cerrar Sesión') }}
+                              </button>
+                            
                         </form>
                            
                     </div>
@@ -352,7 +352,7 @@
         <div class="container relative">
 
             <div class="sofa-img">
-                <img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
+                <img src="{{asset('img/dosjuga-removebg-preview.png')}}" alt="Image" class="img-fluid">
             </div>
 
             
@@ -361,7 +361,7 @@
                 <div class="col-lg-4">
                     <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Onclick<span>
                                 <div class="hero-img-wrap">
-                                    <img src="img/logo-removebg-preview.png " class="img-fluid"
+                                    <img src="{{asset('img/logo-removebg-preview.png')}} " class="img-fluid"
                                         style="width: 100px;">
 
                                 </div>

@@ -35,7 +35,7 @@
           <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
         </ul>
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li><a class="nav-link" href="cart.html"><img src="{{asset('images/cart.svg')}}"></a></li>
+          <li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{asset('images/cart.svg')}}"></a></li>
           <div class="nav-link">
             <form method="POST" action="{{ route('logout') }}">
               @csrf
@@ -66,37 +66,34 @@
 
 
         @foreach ($centrosDeportivos as $centroDeportivo)
-          <div class="col-12 col-md-4 mb-4">
-            <div class="card h-100">
-             
-              <img src="{{ asset('img/' . $centroDeportivo->imagen) }} " class="card-img-top" alt="{{ $centroDeportivo->nombre }}" width="300px" height="300px" > 
-
-
-              <div class="card-body">
-                <ul class="list-unstyled d-flex justify-content-between">
-                  <li>
-                    <i class="text-warning fa fa-star"></i>
-                    <i class="text-warning fa fa-star"></i>
-                    <i class="text-warning fa fa-star"></i>
-                    <i class="text-muted fa fa-star"></i>
-                    <i class="text-muted fa fa-star"></i>
-                  </li>
-                </ul>
-                <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}" class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
-                <p class="card-text">
-                  Dirección: {{ $centroDeportivo->direccion }}<br>
-                  Teléfono: {{ $centroDeportivo->telefono }}<br>
-                  Número de Canchas: {{ $centroDeportivo->numero_canchas }}<br>
-                  Descripción: {{ $centroDeportivo->descripcion }}<br>
-                  Ubicacion: {{ $centroDeportivo->ubicacion}} <br>
-                  Parqueadero: {{ $centroDeportivo->parqueadero }}
-                </p>
-                
-                <p class="text-muted">Disponibilidad</p>
-              </div>
+        <div class="col-12 col-md-4 mb-4">
+          <div class="card h-100">
+            <img src="{{ asset('img/' . $centroDeportivo->imagen) }}" class="card-img-top" alt="{{ $centroDeportivo->nombre }}" width="300px" height="300px">
+      
+            <div class="card-body">
+              <ul class="list-unstyled d-flex justify-content-between">
+                <li>
+                  <i class="text-warning fa fa-star"></i>
+                  <i class="text-warning fa fa-star"></i>
+                  <i class="text-warning fa fa-star"></i>
+                  <i class="text-muted fa fa-star"></i>
+                  <i class="text-muted fa fa-star"></i>
+                </li>
+              </ul>
+              <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}" class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
+              <p class="card-text">
+                Dirección: {{ $centroDeportivo->direccion }}<br>
+                Teléfono: {{ $centroDeportivo->telefono }}<br>
+                Número de Canchas: {{ $centroDeportivo->numero_canchas }}<br>
+                Descripción: {{ $centroDeportivo->descripcion }}<br>
+                Ubicación: {{ $centroDeportivo->municipio->nombre ?? 'No especificado' }}<br> <!-- Accediendo al nombre del municipio -->
+                Parqueadero: {{ $centroDeportivo->parqueadero }}
+              </p>
             </div>
           </div>
-        @endforeach
+        </div>
+      @endforeach
+      
     </div>
     </div>
 

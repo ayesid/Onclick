@@ -25,6 +25,14 @@ return new class extends Migration
                 ->on('municipios')
                 ->onDelete('set null')
                 ->onUpdate('set null');
+
+            $table->unsignedBigInteger('horario_id')->nullable(); // Cambiado 'CeDe_id' por 'centro_deportivo_id'
+
+                $table->foreign('horario_id') // Cambiado 'CeDe_id' por 'centro_deportivo_id'
+                    ->references('id')
+                    ->on('centro_deportivos')
+                    ->onDelete('set null')
+                    ->onUpdate('set null');
             $table->timestamps();
 
             

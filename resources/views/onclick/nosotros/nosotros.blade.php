@@ -43,27 +43,17 @@
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 
-						<li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
+						<li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{ asset('/images/cart.svg') }}"></a></li>
 						<div class="nav-link">
 							<form method="POST" action="{{ route('logout') }}">
 								@csrf
-<<<<<<< HEAD
-	
-								  <button type="submit" class=" btn btn-link" style="text-decoration: none;">
+								<button type="submit" class=" btn btn-link" style="text-decoration: none;">
 									{{ __('Cerrar Sesión') }}
-								</button>
-	
-							</form>
-					  </div>
-					</ul>
-=======
-								<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
-									{{ __('Cerrar Sesión') }}
-								</button>
+							 </button>
+			
 							</form>
 						</div>
 					</ul>	
->>>>>>> 3b4c93693a9b8582ce48954c1d50717ea5b16bd4
 				</div>
 			</div>
 				

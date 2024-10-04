@@ -18,46 +18,17 @@
 
 <body>
   <!-- Start Header/Navigation -->
-  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-    <div class="container">
-      <div class="hero-img-wrap">
-        <img src="{{asset('img/logo-removebg-preview.png')}}" class="img-fluid" style="width: 100px;">
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsFurni">
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-          <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros Deportivos</a></li>
-
-          <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca De Nosotros</a></li>
-          <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
-        </ul>
-        
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-       
-          <li><a class="nav-link" href="cart.html"><img src="{{asset('images/cart.svg')}}"></a></li>
-          <div class="nav-link">
-            <form method="POST" action="{{ route('logout') }}">
-              @csrf
-
-              <button type="submit" class=" btn btn-link" style="text-decoration: none;">
-                {{ __('Cerrar Sesión') }}
-              </button>
-
-          </form>
-        </div>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
   <!-- End Header/Navigation -->
 
   <div class="container py-5">
-    <h2>Crear Centro Deportivo</h2>
+    <h2>Crea un Centro Deportivo</h2>
+    <br>
     <form action="{{ route('centroDeportivo.store') }}" method="post" enctype="multipart/form-data">
       @csrf
+      <div class="mb-3">
+        <input type="file" name="imagen" accept="image/*" id="imagen" class="form-control">
+      </div>
       <div class="mb-3">
         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre del centro deportivo" required>
       </div>
@@ -70,17 +41,16 @@
       <div class="mb-3">
         <input type="number" id="canchas" name="numero_canchas" class="form-control" placeholder="Número de canchas" min="1" required>
       </div>
-      <div class="mb-3">
-        <input type="file" name="imagen" accept="image/*" id="imagen" class="form-control">
-      </div>
+      
       
       <div class="mb-3">
         <textarea id="descripcion" name="descripcion" class="form-control" placeholder="Descripción"></textarea>
       </div>
+      
       <div class="mb-3">
         <label for="municipio_id">Ubicación</label>
         <select id="municipio_id" name="municipio_id" class="form-select" required>
-            <option value="">Seleccione un municipio</option>
+            <option value="">Municipio</option>
             @foreach ($municipios as $municipio)
                 <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
             @endforeach

@@ -56,7 +56,7 @@
 							<div class="intro-excerpt ">
 								<h1>Acerca de nosotros</h1>
 								<p class="mb-4">Nuestra aplicación está diseñada por estudiantes del tecnologo de analisis y desarrolo de sotfwrae del sena </p>
-								<p><a href="{{route('centroDeportivo.listar')}}" class="btn btn-secondary me-2">Reservar</a><a href="{{route('home')}}" class="btn btn-white-outline">Inicio</a></p>
+								<p><a href="{{route('listaCentrosDeportivosWelcome')}}" class="btn btn-secondary me-2">Reservar</a><a href="{{route('homes')}}" class="btn btn-white-outline">Inicio</a></p>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -182,24 +182,7 @@
 					<img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
 				</div>
 
-				<div class="row">
-					<div class="col-lg-8">
-					  <div class="subscription-form">
-						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
-			
-						<form action="#" class="row g-3">
-						  <div class="col-auto">
-							<input type="text" class="form-control" placeholder="Ingresa tu correo">
-						  </div>
-						  <div class="col-auto">
-							<button class="btn btn-primary">Subscríbete</button>
-						  </div>
-						</form>
-			
-					  </div>
-					</div>
-				  </div>
-
+				
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
 						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Onclick<span><div class="hero-img-wrap">
