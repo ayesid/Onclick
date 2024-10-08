@@ -43,13 +43,14 @@
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
 
-						<li><a class="nav-link" href=""><img src="{{ asset('/images/cart.svg') }}"></a></li>
+						<li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{ asset('/images/cart.svg') }}"></a></li>
 						<div class="nav-link">
 							<form method="POST" action="{{ route('logout') }}">
 								@csrf
-								<button type="submit" class="nav-link btn btn-link" style="text-decoration: none;">
+								<button type="submit" class=" btn btn-link" style="text-decoration: none;">
 									{{ __('Cerrar Sesión') }}
-								</button>
+							 </button>
+			
 							</form>
 						</div>
 					</ul>	
@@ -145,7 +146,7 @@
 
 					<!-- Start Column 2 -->
 					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/yesid.jpg" class="img-fluid mb-5">
+						<img src="images/user.svg" class="img-fluid mb-5 bg-black">
 
 						<h3 clas><a href="#"><span class="">Yesid arroyo</span> sanchez</a></h3>
             <span class="d-block position mb-4">Desarrollador de software</span>
@@ -156,7 +157,7 @@
 
 					<!-- Start Column 3 -->
 					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/heider.webp" class="img-fluid mb-5">
+						<img src="images/user.svg" class="img-fluid mb-5 bg-black">
 						<h3 clas><a href="#"><span class="">Heider palmett</a></h3>
             <span class="d-block position mb-4">Documentador </span>
             <p>Estudiante del tecnologo en Analisis y desarrollo de sofware del sena</p>
@@ -165,7 +166,7 @@
 
 					<!-- Start Column 4 -->
 					<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-						<img src="images/yesid.jpg" class="img-fluid mb-5">
+						<img src="images/user.svg" class="img-fluid mb-5 bg-black" >
 
 						<h3 clas><a href="#"><span class="">Nelson cerrano </span> alba</a></h3>
             <span class="d-block position mb-4">Desarrollador de software</span>
@@ -193,23 +194,6 @@
 					<img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
 				</div>
 
-				<div class="row">
-					<div class="col-lg-8">
-					  <div class="subscription-form">
-						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
-			
-						<form action="#" class="row g-3">
-						  <div class="col-auto">
-							<input type="text" class="form-control" placeholder="Ingresa tu correo">
-						  </div>
-						  <div class="col-auto">
-							<button class="btn btn-primary">Subscríbete</button>
-						  </div>
-						</form>
-			
-					  </div>
-					</div>
-				  </div>
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">

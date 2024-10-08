@@ -1,50 +1,45 @@
 
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="Untree.co">
-  <link rel="shortcut icon" href="img/logo-removebg-preview.png">
-
-  <meta name="description" content="" />
-  <meta name="keywords" content="bootstrap, bootstrap4" />
-
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="Untree.co">
+		<link rel="shortcut icon" href="/img/logo_sinfondo.png">
+		<meta name="description" content="" />
+		<meta name="keywords" content="bootstrap, bootstrap4" />
+	  
 		<!-- Bootstrap CSS -->
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-		<title>Servicios</title>
-	</head>
-
+		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+		<title>Centros deportivos</title>
+	  </head>
+	
 	<body>
-
 		<!-- Start Header/Navigation -->
-		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar" >
-
-			<div class="container" >
-				<div class="hero-img-wrap">
-					
-				</div>
-
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarsFurni">
-					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+		<nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
+			<div class="container">
+			  <div class="hero-img-wrap">
+				<img src="{{asset('img/logo-removebg-preview.png')}}" class="img-fluid" style="width: 100px;">
+			  </div>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarsFurni">
+				<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li><a class="nav-link" href="{{ route('homes') }}">Inicio</a></li>
-                        <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros deportivos</a></li>
-
-						<li><a class="nav-link" href="{{route('nowelcome')}}">Acerca de nosotros</a></li>
-						<li><a class="nav-link" href="{{route('seservicios')}}">Servicios</a></li>
-                        <li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a></li>
-
+						<li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros deportivos</a>
+						</li>
+	
+						<li><a class="nav-link" href="{{ route('nowelcome') }}">Acerca de nosotros</a></li>
+						<li><a class="nav-link" href="{{ route('seservicios') }}">Servicios</a></li>
+						<li><a class="nav-link" href="{{ route('login') }}"><img src={{ asset('/images/user.svg') }}></a>
+						</li>
 					</ul>
 				</div>
 			</div>
-				
 		</nav>
 		<!-- End Header/Navigation -->
 
@@ -207,23 +202,7 @@
 					<img src="img/dosjuga-removebg-preview.png" alt="Image" class="img-fluid">
 				</div>
 
-				<div class="row">
-					<div class="col-lg-8">
-					  <div class="subscription-form">
-						<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Correo" class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
-			
-						<form action="#" class="row g-3">
-						  <div class="col-auto">
-							<input type="text" class="form-control" placeholder="Ingresa tu correo">
-						  </div>
-						  <div class="col-auto">
-							<button class="btn btn-primary">Subscríbete</button>
-						  </div>
-						</form>
-			
-					  </div>
-					</div>
-				  </div>
+				
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">

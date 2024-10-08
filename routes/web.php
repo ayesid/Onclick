@@ -4,6 +4,7 @@ use App\Http\Controllers\CanchaController;
 use App\Http\Controllers\CentroDeportivoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservaController;
 use App\Models\CentroDeportivo;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,11 @@ Route::get('canchas/{cancha}', [CanchaController::class, 'show'])->name('canchas
 Route::put('canchas/{cancha}', [CanchaController::class, 'update'])->name('canchas.update');
 Route::delete('canchas/{cancha}', [CanchaController::class, 'destroy'])->name('canchas.destroy');
 Route::get('canchas/{cancha}/editar', [CanchaController::class, 'edit'])->name('canchas.edit');
+
+
+// routes/web.php
+
+Route::get('reservas/listar', [ReservaController::class, 'listaReservas'])->name('Reservas.listar');
+Route::get('/reservas/create/{cancha_id}', [ReservaController::class, 'disponibilidad'])->name('reservas.create');
+Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
+Route::get('/reservas/disponibilidad', [ReservaController::class, 'getReservas'])->name('reservas.getReservas');

@@ -15,13 +15,7 @@ return new class extends Migration
             $table->id();
             $table->time('horarioapertura')->nullable();
             $table->time('horariocierre')->nullable();
-            $table->unsignedBigInteger('centro_deportivo_id')->nullable(); // Cambiado 'CeDe_id' por 'centro_deportivo_id'
-
-            $table->foreign('centro_deportivo_id') // Cambiado 'CeDe_id' por 'centro_deportivo_id'
-                ->references('id')
-                ->on('centro_deportivos')
-                ->onDelete('set null')
-                ->onUpdate('set null');
+           
             $table->timestamps();
         });
     }
