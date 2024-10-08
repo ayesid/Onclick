@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\CentroDeportivo;
 
+use App\Models\CentroDeportivo;
 use App\Models\Cancha;
 use Illuminate\Http\Request;
 
@@ -11,62 +11,64 @@ class CanchaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function listaCancha($centro_deportivo_id)
-    {
-        $centroDeportivo = CentroDeportivo::find($centro_deportivo_id);
-        $canchas = Cancha::where('centro_deportivo_id', $centro_deportivo_id)->get();
 
-        return view('canchas.listaCancha', [
-            'centroDeportivo' => $centroDeportivo,
-            'canchas' => $canchas
-        ]);
+
+    public function listar(Request $request)
+    {
+        $centrosDeportivos = CentroDeportivo::all();
+        $canchas = Cancha::all();
+        return view('admin.SuperAdmin.canchas.listaCancha', compact('centrosDeportivos', 'canchas'));
     }
 
 
 
 
-  
-    public function create($centro_deportivo_id)
+    public function create(Request $request)
+
     {
-        $centroDeportivo = CentroDeportivo::findOrFail($centro_deportivo_id);
-        return view('canchas.create', compact('centroDeportivo'));
+
+        $centrosDeportivos = CentroDeportivo::all();
+        return view('admin.SuperAdmin.canchas.create', compact('centrosDeportivos'));
     }
-    
+
 
 
 
     public function store(Request $request)
     {
+        // Validar los datos de entrada
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'telefono' => 'required|string|max:20',
-            'precio' => 'required|numeric|min:0',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'descripcion' => 'nullable|string',
-            'centro_deportivo_id' => 'required|exists:centro_deportivos,id',
+           
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+           
         ]);
     
+        // Crear un nuevo objeto de Cancha y asignar los datos
         $cancha = new Cancha();
         $cancha->nombre = $request->nombre;
         $cancha->telefono = $request->telefono;
         $cancha->precio = $request->precio;
+        $cancha->centro_deportivo_id = $request->centro_deportivo_id;
+        $cancha->descripcion = $request->descripcion;
     
+        // Manejar la imagen si se cargó una
         if ($request->hasFile('imagen')) {
             $image = $request->file('imagen');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('img'), $imageName);
-            $cancha->imagen = $imageName;
+            $path = $image->storeAs('public/img', $imageName);
+            $cancha->imagen = basename($path); // Guardamos solo el nombre del archivo
         }
-    
-        $cancha->descripcion = $request->descripcion;
-        $cancha->centro_deportivo_id = $request->centro_deportivo_id;
         
+    
+        // Guardar la cancha en la base de datos
         $cancha->save();
     
+        // Redirigir con un mensaje de éxito
         return redirect()->back()->with('success', 'Cancha creada con éxito.');
     }
     
-    
+
+
 
     /**
      * Display the specified resource.
@@ -81,7 +83,10 @@ class CanchaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $cancha = Cancha::findOrFail($id);
+        $centrosDeportivos = CentroDeportivo::all();
+        return view('admin.SuperAdmin.canchas.edit', compact('cancha', 'centrosDeportivos'));
     }
 
     /**
@@ -89,7 +94,40 @@ class CanchaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'required|string',
+            'precio' => 'required|numeric|min:0',
+            'imagen' => 'nullable|image',
+            'descripcion' => 'nullable|string',
+        ]);
+
+        $cancha = Cancha::findOrFail($id);
+        $cancha->nombre = $request->nombre;
+        $cancha->telefono = $request->telefono;
+        $cancha->precio = $request->precio;
+        $cancha->centro_deportivo_id = $request->centro_deportivo_id;
+        $cancha->descripcion = $request->descripcion;
+
+        if ($request->hasFile('imagen')) {
+            // Eliminar la imagen antigua si existe
+            if ($cancha->imagen && file_exists(public_path('img/' . $cancha->imagen))) {
+                unlink(public_path('img/' . $cancha->imagen));
+            }
+
+            // Guardar la nueva imagen
+            
+                $image = $request->file('imagen');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $path = $image->storeAs('public/img', $imageName);
+                $cancha->imagen = basename($path); // Guardamos solo el nombre del archivo
+            
+            
+        }
+
+        $cancha->save();
+
+        return redirect()->route('canchas.listar')->with('success', 'Cancha actualizada con éxito');
     }
 
     /**
@@ -97,6 +135,16 @@ class CanchaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cancha = Cancha::findOrFail($id);
+
+        // Eliminar la imagen asociada si existe
+        if ($cancha->imagen && file_exists(public_path('img/' . $cancha->imagen))) {
+            unlink(public_path('img/' . $cancha->imagen));
+        }
+
+        // Eliminar la cancha
+        $cancha->delete();
+
+        return redirect()->route('canchas.listar')->with('success', 'Cancha eliminada con éxito.');
     }
 }

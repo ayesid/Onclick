@@ -69,15 +69,6 @@
 
 
                             <div class="card-body">
-                                <ul class="list-unstyled d-flex justify-content-between">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
                                 <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}"
                                     class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
                                 <p class="card-text">
@@ -85,7 +76,7 @@
                                     Teléfono: {{ $centroDeportivo->telefono }}<br>
                                     Número de Canchas: {{ $centroDeportivo->numero_canchas }}<br>
                                     Descripción: {{ $centroDeportivo->descripcion }}<br>
-                                    Ubicacion: {{ $centroDeportivo->ubicacion }} <br>
+                                    Ubicación: {{ $centroDeportivo->municipio->nombre }}<br>
                                     Parqueadero: {{ $centroDeportivo->parqueadero }}
                                 </p>
 

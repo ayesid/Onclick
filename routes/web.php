@@ -34,17 +34,17 @@ Route::get('centroDeportivo/listarwel', [CentroDeportivoController::class, 'list
  
 
 Route::get('centroDeportivo/listar', [CentroDeportivoController::class, 'listaCentrosDeportivos'])->name('centroDeportivo.listar');
-Route::get('centroDeportivo/create', [CentroDeportivoController::class, 'create']);
+Route::get('centroDeportivo/create', [CentroDeportivoController::class, 'create'])->name('centroDeportivo.create');
 Route::post('centroDeportivo/store', [CentroDeportivoController::class, 'store'])->name('centroDeportivo.store');
 Route::get('centroDeportivo/{id}/canchas', [CentroDeportivoController::class, 'showCanchas'])->name('centroDeportivo.show');
 Route::put('centroDeportivo/{centroDeportivo}', [CentroDeportivoController::class, 'update'])->name('centroDeportivo.update');
 Route::delete('centroDeportivo/{centroDeportivo}', [CentroDeportivoController::class, 'destroy'])->name('centroDeportivo.destroy');
 Route::get('centroDeportivo/{centroDeportivo}/editar', [CentroDeportivoController::class, 'edit'])->name('centroDeportivo.edit');
 
-Route::get('canchas/{centro_deportivo_id}', [CanchaController::class, 'listaCancha'])->name('canchas.listar');
-Route::get('canchas/create/{centro_deportivo_id}', [CanchaController::class, 'create'])->name('canchas.create');
+Route::get('canchas', [CanchaController::class, 'listar'])->name('canchas.listar');
+Route::get('canchas/create', [CanchaController::class, 'create'])->name('canchas.create');
 Route::post('/canchas/store', [CanchaController::class, 'store'])->name('canchas.store');
-
+// /{centro_deportivo_id}canchacreate es esto
 Route::get('canchas/{cancha}', [CanchaController::class, 'show'])->name('canchas.show');
 Route::put('canchas/{cancha}', [CanchaController::class, 'update'])->name('canchas.update');
 Route::delete('canchas/{cancha}', [CanchaController::class, 'destroy'])->name('canchas.destroy');

@@ -12,6 +12,11 @@ class CentroDeportivoController extends Controller
      * Display a listing of the resource.
      */
 
+
+     
+
+
+
      public function listaCentrosDeportivosWelcome()
      {
         $centrosDeportivos = CentroDeportivo::all();
@@ -23,7 +28,7 @@ class CentroDeportivoController extends Controller
     public function listaCentrosDeportivos()
     {
         $centrosDeportivos = CentroDeportivo::all();
-        return view('centroDeportivo.listaCentrosDeportivos', compact('centrosDeportivos'));
+        return view('admin.SuperAdmin.listaCentrosDeportivos', compact('centrosDeportivos'));
 
     }
 
@@ -33,10 +38,11 @@ class CentroDeportivoController extends Controller
     public function create()
     {
         $municipios = Municipio::all(); // Obtiene todos los municipios
-        return view('centroDeportivo.create', compact('municipios')); // Pasa los municipios a la vista
+        return view('admin.SuperAdmin.create', compact('municipios')); // Pasa los municipios a la vista
+        // return view('admin.SuperAdmin.create');
 
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -49,7 +55,7 @@ class CentroDeportivoController extends Controller
         ]);
     
         $centrosDeportivo = new CentroDeportivo();
-        $centrosDeportivo->nombre = $request->nombre;
+        $centrosDeportivo->nombre = $request->nombre; 
         $centrosDeportivo->direccion = $request->direccion;
         $centrosDeportivo->telefono = $request->telefono;
         $centrosDeportivo->numero_canchas = $request->numero_canchas;
@@ -60,7 +66,7 @@ class CentroDeportivoController extends Controller
             $image->move(public_path('img'), $imageName);
             $centrosDeportivo->imagen = $imageName;
         }
-    
+        $centrosDeportivo->municipio_id = $request->municipio_id;
         $centrosDeportivo->descripcion = $request->descripcion;
         $centrosDeportivo->parqueadero = $request->parqueadero;
     
@@ -88,7 +94,9 @@ class CentroDeportivoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+    $centroDeportivo = CentroDeportivo::findOrFail($id);
+    $municipios = Municipio::all();
+    return view('admin.SuperAdmin.edit', compact('centroDeportivo', 'municipios'));
     }
 
     /**
@@ -96,7 +104,31 @@ class CentroDeportivoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        // Obtener el centro deportivo a actualizar
+        $centroDeportivo = CentroDeportivo::findOrFail($id);
+        $centroDeportivo->nombre = $request->nombre;
+        $centroDeportivo->direccion = $request->direccion;
+        $centroDeportivo->telefono = $request->telefono;
+        $centroDeportivo->numero_canchas = $request->numero_canchas;
+        $centroDeportivo->descripcion = $request->descripcion;
+        $centroDeportivo->municipio_id = $request->municipio_id;
+        $centroDeportivo->parqueadero = $request->parqueadero;
+    
+        // Actualizar la imagen solo si se subió una nueva
+        if ($request->hasFile('imagen')) {
+            $image = $request->file('imagen');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName);
+            $centroDeportivo->imagen = $imageName;
+        }
+        $centroDeportivo->save();
+
+        return redirect()->route('centroDeportivo.listar')->with('success', 'Centro deportivo actualizado con éxito.');
+    
     }
 
     /**
@@ -104,6 +136,16 @@ class CentroDeportivoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $centroDeportivo = CentroDeportivo::findOrFail($id);
+    
+        // Eliminar la imagen asociada si existe
+        if ($centroDeportivo->imagen && file_exists(public_path('img/' . $centroDeportivo->imagen))) {
+            unlink(public_path('img/' . $centroDeportivo->imagen));
+        }
+        
+        // Eliminar el centro deportivo
+        $centroDeportivo->delete();
+
+        return redirect()->route('centroDeportivo.listar')->with('success', 'Centro deportivo eliminado con éxito.');
     }
 }
