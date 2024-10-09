@@ -52,6 +52,9 @@ Route::delete('canchas/{cancha}', [CanchaController::class, 'destroy'])->name('c
 Route::get('canchas/{cancha}/editar', [CanchaController::class, 'edit'])->name('canchas.edit');
 
 
+
+
+
 // routes/web.php
 
 Route::get('reservas/listar', [ReservaController::class, 'listaReservas'])->name('Reservas.listar');
