@@ -68,7 +68,7 @@
 
 
                             <div class="card-body">
-                                <a href="{{ route('login') }}"
+                                <a href="{{ route('listarCancha') }}"
                                     class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
                                 <p class="card-text">
                                     Dirección: {{ $centroDeportivo->direccion }}<br>

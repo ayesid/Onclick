@@ -80,7 +80,7 @@
 
 
                             <div class="card-body">
-                                <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}"
+                                <a href="{{ route('listarCancha', ['centro_deportivo_id' => $centroDeportivo->id]) }}"
                                     class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
                                 <p class="card-text">
                                     Dirección: {{ $centroDeportivo->direccion }}<br>
