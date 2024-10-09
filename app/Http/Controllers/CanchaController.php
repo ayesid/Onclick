@@ -20,7 +20,7 @@ class CanchaController extends Controller
         // Carga el centro deportivo específico para pasarlo a la vista
         $centroDeportivo = CentroDeportivo::find($centroDeportivoId);
     
-        return view('listaCancha', compact('canchas', 'centroDeportivo'));
+        return view('onclick.nosotros.listaCancha', compact('canchas', 'centroDeportivo'));
     }
     
     
