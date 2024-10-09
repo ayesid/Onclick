@@ -33,7 +33,7 @@ Route::get('centroDeportivo/listarwel', [CentroDeportivoController::class, 'list
 
 
  
-Route::get('centroDeportivo/listarsuper', [CentroDeportivoController::class, 'listaCentrosDeportivosuser'])->name('listaCentrosDeportivosuser');//esta para el usuario logeado
+Route::get('centroDeportivo/listaruser', [CentroDeportivoController::class, 'listaCentrosDeportivosuser'])->name('listaCentrosDeportivosuser');//esta para el usuario logeado
 Route::get('centroDeportivo/listar', [CentroDeportivoController::class, 'listaCentrosDeportivos'])->name('centroDeportivo.listar');
 Route::get('centroDeportivo/create', [CentroDeportivoController::class, 'create'])->name('centroDeportivo.create');
 Route::post('centroDeportivo/store', [CentroDeportivoController::class, 'store'])->name('centroDeportivo.store');

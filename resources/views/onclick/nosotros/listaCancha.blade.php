@@ -126,7 +126,6 @@
                         <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
                     </ul>
                 </div>
-
                 <div class="col-lg-8">
                     <div class="row links-wrap">
                         <div class="col-6 col-sm-6 col-md-3">
@@ -137,7 +136,6 @@
                                 <li><a href="#">Contacto</a></li>
                             </ul>
                         </div>
-
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
                                 <li><a href="#">Términos y Condiciones</a></li>
@@ -156,7 +154,6 @@
                         <p class="mb-2 text-center text-lg-start">© 2024 Onclick Reservas. Todos los derechos
                             reservados.</p>
                     </div>
-
                     <div class="col-lg-6 text-center text-lg-end">
                         <ul class="list-unstyled d-inline-flex ms-auto">
                             <li class="me-4"><a href="#">Términos</a></li>
