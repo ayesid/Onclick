@@ -65,23 +65,35 @@
             </div>
     
             <h3>Canchas</h3> <br>
-            <div class="row">
+            <div class="row mt-4">
                 @foreach ($canchas as $cancha)
-                    <div class="col-12 col-md-4 mb-4">
-                        <div class="card h-100">
-                            <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300px" height="300px">
-                            <div class="card-body">
-                                <p class="card-text">
-                                    Nombre: {{ $cancha->nombre }}<br>
-                                    Teléfono: {{ $cancha->telefono }}<br>
-                                    Precio: {{ $cancha->precio }} <br>
-                                    Descripción: {{ $cancha->descripcion }}<br>
-                                </p>
-                            </div>
-                        </div>
+                  <div class="col-12 col-md-4 mb-4"> <!-- Aquí está la clase col-12 col-md-4 -->
+                    <div class="card h-100">
+                      <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}">
+                        <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300" height="300">
+                      </a>
+                      <div class="card-body">
+                        <ul class="list-unstyled d-flex justify-content-between">
+                          <li>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-warning fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                            <i class="text-muted fa fa-star"></i>
+                          </li>
+                        </ul>
+                        <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}" class="h4 text-decoration-none text-success">{{ $cancha->nombre }}</a>
+                        <p class="card-text">
+                          Precio: {{ $cancha->precio }}<br>
+                          Descripción: {{ $cancha->descripcion }}<br>
+                          Centro Deportivo: {{ $cancha->centroDeportivo->nombre }}<br>
+                        </p>
+                        <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}" >Reservar</a>
+                      </div>
                     </div>
+                  </div>
                 @endforeach
-            </div>
+              </div>
         </div>
     </section>
     
