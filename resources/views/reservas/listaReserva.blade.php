@@ -29,8 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarsFurni">
               <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                 <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros Deportivos</a></li>
-      
+                <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros Deportivos</a></li>
                 <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca De Nosotros</a></li>
                 <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
               </ul>
@@ -89,6 +88,10 @@
         </table>
     </div> <br>
     <br>
+
+
+
+
  <!-- Start Footer Section -->
  <footer class="footer-section bg-gradient" >
     <div class="container relative">

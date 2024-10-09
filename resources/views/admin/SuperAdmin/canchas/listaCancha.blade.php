@@ -13,7 +13,6 @@
                 <div class="card-body">
                     <p class="card-text">
                         Nombre: {{ $cancha->nombre }}<br>
-                        Teléfono: {{ $cancha->telefono }}<br>
                         Precio:{{$cancha->precio}} <br>
                         Descripción: {{ $cancha->descripcion }}<br>
                         Centro Deportivo: {{ $cancha->centro_deportivo_id }}<br>

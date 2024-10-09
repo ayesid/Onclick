@@ -99,34 +99,35 @@ class CanchaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
+            'centro_deportivo_id' => 'required|exists:centro_deportivos,id',
             'nombre' => 'required|string|max:255',
-            'telefono' => 'required|string',
             'precio' => 'required|numeric|min:0',
-            'imagen' => 'nullable|image',
             'descripcion' => 'nullable|string',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
+    
         $cancha = Cancha::findOrFail($id);
+        $cancha->centro_deportivo_id = $request->centro_deportivo_id;
         $cancha->nombre = $request->nombre;
         $cancha->precio = $request->precio;
-        $cancha->centro_deportivo_id = $request->centro_deportivo_id;
         $cancha->descripcion = $request->descripcion;
+    
+        // Manejo de la imagen (si se sube una nueva imagen)
         if ($request->hasFile('imagen')) {
             $file = $request->file('imagen');
             $nombreArchivo = time() . '_' . $file->getClientOriginalName();
-            
             $file->move(public_path('img'), $nombreArchivo);
-            $cancha->imagen = $nombreArchivo; // Guarda el nombre de la imagen en la base de datos
-        
+            $cancha->imagen = $nombreArchivo;
         }
-
+    
         $cancha->save();
-
-        return redirect()->route('canchas.listar')->with('success', 'Cancha actualizada con éxito');
+    
+        return redirect()->route('canchas.listar')->with('success', 'Cancha actualizada exitosamente');
     }
+    
 
     /**
      * Remove the specified resource from storage.

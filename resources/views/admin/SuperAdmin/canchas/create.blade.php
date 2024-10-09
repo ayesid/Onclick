@@ -19,6 +19,7 @@
                 <div class="mb-3">
                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de cancha" required>
                 </div>
+            
                 <div class="mb-3">
                     <input type="number" id="precio" name="precio" class="form-control" placeholder="Precio $" min="0" required>
                 </div>
