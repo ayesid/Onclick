@@ -42,6 +42,10 @@ Route::put('centroDeportivo/{centroDeportivo}', [CentroDeportivoController::clas
 Route::delete('centroDeportivo/{centroDeportivo}', [CentroDeportivoController::class, 'destroy'])->name('centroDeportivo.destroy');
 Route::get('centroDeportivo/{centroDeportivo}/editar', [CentroDeportivoController::class, 'edit'])->name('centroDeportivo.edit');
 
+
+
+Route::get('/canchas/centro/{centro_deportivo_id}', [CanchaController::class, 'canchas.listarPorCentroDeportivo'])->name('canchas.listarPorCentroDeportivo');//ruta para mostrar la cancha solamente para user
+
 Route::get('canchas', [CanchaController::class, 'listar'])->name('canchas.listar');
 Route::get('canchas/create', [CanchaController::class, 'create'])->name('canchas.create');
 Route::post('/canchas/store', [CanchaController::class, 'store'])->name('canchas.store');

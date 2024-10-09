@@ -12,7 +12,15 @@ class CanchaController extends Controller
      * Display a listing of the resource.
      */
 
-
+    
+     public function listarPorCentroDeportivo($centro_deportivo_id)
+     {
+         $centroDeportivo = CentroDeportivo::findOrFail($centro_deportivo_id);
+         $canchas = Cancha::where('centro_deportivo_id', $centro_deportivo_id)->get();
+         
+         return view('listaCanchaPorCentro', compact('centroDeportivo', 'canchas'));
+     }
+     
     public function listar(Request $request)
     {
         $centrosDeportivos = CentroDeportivo::all();
