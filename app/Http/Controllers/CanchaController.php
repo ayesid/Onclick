@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CentroDeportivo;
-use App\Models\Cancha;
+use App\Models\Cancha; 
 use Illuminate\Http\Request;
 
 class CanchaController extends Controller
@@ -35,37 +35,36 @@ class CanchaController extends Controller
 
 
     public function store(Request $request)
-    {
-        // Validar los datos de entrada
-        $request->validate([
-           
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-           
-        ]);
-    
-        // Crear un nuevo objeto de Cancha y asignar los datos
-        $cancha = new Cancha();
-        $cancha->nombre = $request->nombre;
-        $cancha->telefono = $request->telefono;
-        $cancha->precio = $request->precio;
-        $cancha->centro_deportivo_id = $request->centro_deportivo_id;
-        $cancha->descripcion = $request->descripcion;
-    
-        // Manejar la imagen si se cargó una
-        if ($request->hasFile('imagen')) {
-            $image = $request->file('imagen');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('public/img', $imageName);
-            $cancha->imagen = basename($path); // Guardamos solo el nombre del archivo
-        }
+{
+    $request->validate([
+        'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $cancha = new Cancha();
+    $cancha->nombre = $request->nombre;
+    $cancha->telefono = $request->telefono;
+    $cancha->precio = $request->precio;
+    $cancha->centro_deportivo_id = $request->centro_deportivo_id;
+    $cancha->descripcion = $request->descripcion;
+
+    if ($request->hasFile('imagen')) {
+        $image = $request->file('imagen');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
         
-    
-        // Guardar la cancha en la base de datos
-        $cancha->save();
-    
-        // Redirigir con un mensaje de éxito
-        return redirect()->back()->with('success', 'Cancha creada con éxito.');
+        // Verifica si el archivo se guarda y si la ruta es correcta
+        if ($path = $image->storeAs('public/img', $imageName)) {
+            $cancha->imagen = basename($path); // Solo guarda el nombre del archivo
+        } else {
+            // Mensaje de error si no se puede guardar la imagen
+            return redirect()->back()->with('error', 'Error al guardar la imagen.');
+        }
     }
+
+    $cancha->save();
+
+    return redirect()->back()->with('success', 'Cancha creada con éxito.');
+}
+
     
 
 
