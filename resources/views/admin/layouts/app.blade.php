@@ -167,7 +167,7 @@
 
         <div class="main-panel">
             <div class="content">
-                @include('sweetalert::alert')
+               
                 @yield('content')
             </div>
             <footer class="footer">

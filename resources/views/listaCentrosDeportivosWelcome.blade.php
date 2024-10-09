@@ -68,14 +68,15 @@
 
 
                             <div class="card-body">
-                                <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}"
+                                <a href="{{ route('login') }}"
                                     class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
                                 <p class="card-text">
                                     Dirección: {{ $centroDeportivo->direccion }}<br>
                                     Teléfono: {{ $centroDeportivo->telefono }}<br>
                                     Número de Canchas: {{ $centroDeportivo->numero_canchas }}<br>
                                     Descripción: {{ $centroDeportivo->descripcion }}<br>
-                                    Ubicación: {{ $centroDeportivo->municipio->nombre }}<br>
+                                    Ubicación: {{ $centroDeportivo->municipio ? $centroDeportivo->municipio->nombre : 'Sin ubicación' }}<br>
+
                                     Parqueadero: {{ $centroDeportivo->parqueadero }}
                                 </p>
 
