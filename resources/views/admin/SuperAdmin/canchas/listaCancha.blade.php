@@ -5,48 +5,41 @@
             'titulo' => 'Crear Cancha',
             'show' => false,
         ])
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Precio</th>
-                        <th>Descripción</th>
-                        <th>Centro Deportivo</th>
-                        <th>Imagen</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($canchas as $cancha)
-                        <tr>
-                            <td>{{ $cancha->nombre }}</td>
-                            <td>{{ $cancha->telefono }}</td>
-                            <td>${{ number_format($cancha->precio, 2) }}</td>
-                            <td>{{ $cancha->descripcion }}</td>
-                            <td>{{ $cancha->centroDeportivo->nombre ?? 'No asignado' }}</td>
-                            <td>
-                                @if ($cancha->imagen)
-                                    <img src="{{ asset('storage/' . $cancha->imagen) }}" alt="{{ $cancha->nombre }}"
-                                        style="width: 100px; height: auto;">
-                                @else
-                                    No disponible
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('canchas.edit', $cancha->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                <form action="{{ route('canchas.destroy', $cancha->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"
-                                        onclick="return confirm('¿Estás seguro de que quieres eliminar esta cancha?');">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+<div class="row">
+    @foreach ($canchas as $cancha)
+        <div class="col-12 col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300px" height="300px">
+                <div class="card-body">
+                    <p class="card-text">
+                        Nombre: {{ $cancha->nombre }}<br>
+                        Teléfono: {{ $cancha->telefono }}<br>
+                        Precio:{{$cancha->precio}} <br>
+                        Descripción: {{ $cancha->descripcion }}<br>
+                        Centro Deportivo: {{ $cancha->centro_deportivo_id }}<br>
+                    </p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                  
+                    <a href="{{ route('canchas.edit', $cancha->id) }}"
+                         class="btn btn-warning btn-sm">Editar</a>
+                  
+                   
+                         <form action="{{ route('canchas.destroy', $cancha->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que quieres eliminar esta cancha?');">Eliminar</button>
+                        </form>
+                </div>
+            </div>
         </div>
+    @endforeach
+</div>
+
+
+
+     </div>
     @endcomponent
     </div>
 @endsection

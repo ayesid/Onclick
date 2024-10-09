@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="{{ asset('img/logo_sinfondo.png') }}">
+    <link rel="shortcut icon" href="/img/logo_sinfondo.png">
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
 
@@ -14,6 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('css/tiny-slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <title>Canchas</title>
 </head>
 
 <body>
@@ -30,25 +31,25 @@
             <div class="collapse navbar-collapse" id="navbarsFurni">
                 <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                     <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                    <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros Deportivos</a></li>
-                    <li><a class="nav-link" href="{{ route('Nosotros') }}">Acerca De Nosotros</a></li>
-                    <li><a class="nav-link" href="{{ route('Servicios') }}">Servicios</a></li>
-                    <li><a class="nav-link" href="{{ route('Contactanos') }}">Contáctanos</a></li>
+                    <li><a class="nav-link" href="{{ route('centroDeportivo.listar') }}">Centros deportivos</a></li>
+
+                    <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca de nosotros</a></li>
+                    <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
                 </ul>
+
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" href="#"><img src="{{ asset('images/cart.svg') }}"
-                                alt="Cart"></a></li>
-                    <li>
+
+                    <li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{ asset('/images/cart.svg') }}"></a></li>
+                    <div class="nav-link">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="btn btn-link">Cerrar Sesión</button>
+                            <button type="submit" class=" btn btn-link" style="text-decoration: none;">
+                                {{ __('Cerrar Sesión') }}
+                         </button>
+        
                         </form>
-                        <button type="submit" class=" btn btn-link" style="text-decoration: none;">
-                            {{ __('Cerrar Sesión') }}
-                        </button>
-                        </form>
-                    </li>
-                </ul>
+                    </div>
+                </ul>	
             </div>
         </div>
     </nav>
@@ -58,45 +59,24 @@
         <div class="container py-5">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    @if ($centroDeportivo)
-                        <h1 class="h2 text-success">{{ $centroDeportivo->nombre }}</h1>
-                    @else
-                        <h1 class="h2 text-danger">Centro Deportivo no encontrado</h1>
-                    @endif
-                    <h4>Tu mejor opción para reservar canchas sintéticas en Popayán. Fácil, rápido y conveniente.</h4>
+                    <h1 class="h2 text-success">{{ $centroDeportivo->nombre ?? 'Centro Deportivo no encontrado' }}</h1>
+                    <p>{{ $centroDeportivo->descripcion ?? '' }}</p>
                 </div>
             </div>
-            <h3>Canchas Sintéticas</h3>
-            <a class="btn btn-primary"
-                href="{{ route('canchas.create', ['centro_deportivo_id' => $centroDeportivo->id]) }}"
-                role="button">Crear Cancha</a>
-            <div class="row mt-4">
+    
+            <h3>Canchas</h3> <br>
+            <div class="row">
                 @foreach ($canchas as $cancha)
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-                            <a href="#">
-                                <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top"
-                                    alt="{{ $cancha->nombre }}" width="300" height="300">
-                            </a>
+                            <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300px" height="300px">
                             <div class="card-body">
-                                <ul class="list-unstyled d-flex justify-content-between">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <a href="#"
-                                    class="h4 text-decoration-none text-success">{{ $cancha->nombre }}</a>
                                 <p class="card-text">
-
-                                    Precio: {{ $cancha->precio }}<br>
+                                    Nombre: {{ $cancha->nombre }}<br>
+                                    Teléfono: {{ $cancha->telefono }}<br>
+                                    Precio: {{ $cancha->precio }} <br>
                                     Descripción: {{ $cancha->descripcion }}<br>
-                                    Centro Deportivo: {{ $cancha->centroDeportivo->nombre }}<br>
                                 </p>
-                                <p class="text-muted">Reviews (24)</p>
                             </div>
                         </div>
                     </div>
@@ -104,38 +84,29 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Start Footer Section -->
     <footer class="footer-section bg-gradient">
         <div class="container relative">
+
             <div class="sofa-img">
                 <img src="{{ asset('img/dosjuga-removebg-preview.png') }}" alt="Image" class="img-fluid">
             </div>
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="subscription-form">
-                        <h3 class="d-flex align-items-center"><span class="me-1"><img
-                                    src="{{ asset('images/envelope-outline.svg') }}" alt="Correo"
-                                    class="img-fluid"></span><span>Subscríbete a nuestro boletín</span></h3>
-                        <form action="#" class="row g-3">
-                            <div class="col-auto">
-                                <input type="text" class="form-control" placeholder="Ingresa tu correo">
-                            </div>
-                            <div class="col-auto">
-                                <button class="btn btn-primary">Subscríbete</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
+
             <div class="row g-5 mb-5">
                 <div class="col-lg-4">
-                    <div class="mb-4 footer-logo-wrap">
-                        <a href="#" class="footer-logo">Onclick<span><img
-                                    src="{{ asset('img/logo-removebg-preview.png') }}" class="img-fluid"
-                                    style="width: 100px;"></span></a>
+                    <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Onclick<span>
+                                <div class="hero-img-wrap">
+                                    <img src="{{ asset('img/logo-removebg-preview.png') }}" class="img-fluid"
+                                        style="width: 100px;">
+
+                                </div>
+                            </span></a>
                     </div>
                     <p>Tu mejor opción para reservar canchas sintéticas en Popayán. Fácil, rápido y conveniente.</p>
+
                     <ul class="list-unstyled custom-social">
                         <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
                         <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
@@ -162,7 +133,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
             <div class="border-top copyright">
                 <div class="row pt-4">
                     <div class="col-lg-6">
@@ -178,10 +151,13 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </footer>
     <!-- End Footer Section -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/tiny-slider.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/custom.js"></script>
 </body>
+
+</html>

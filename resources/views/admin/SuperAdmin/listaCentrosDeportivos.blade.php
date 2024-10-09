@@ -17,7 +17,7 @@
                                     Teléfono: {{ $centroDeportivo->telefono }}<br>
                                     Número de Canchas: {{ $centroDeportivo->numero_canchas }}<br>
                                     Descripción: {{ $centroDeportivo->descripcion }}<br>
-                                    Ubicación: {{ $centroDeportivo->municipio->nombre }}<br>
+                                    Ubicación: {{ $centroDeportivo->municipio ? $centroDeportivo->municipio->nombre : 'Sin ubicación' }}<br>
                                     Parqueadero: {{ $centroDeportivo->parqueadero }}
                                 </p>
                             </div>
