@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\centroDeportivo;
-use App\Models\CentroDeportivo as ModelsCentroDeportivo;
 use App\Models\Municipio;
 use Illuminate\Http\Request;
 
 class CentroDeportivoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-
-
-     
-
-
 
      public function listaCentrosDeportivosWelcome()
      {
@@ -29,6 +20,13 @@ class CentroDeportivoController extends Controller
     {
         $centrosDeportivos = CentroDeportivo::all();
         return view('admin.SuperAdmin.listaCentrosDeportivos', compact('centrosDeportivos'));
+
+    }
+    
+
+    public function listaCentrosDeportivosuser(){
+        $centrosDeportivos = CentroDeportivo::all();
+        return view('onclick.nosotros.listaCentrosDeportivosWelcome', compact('centrosDeportivos'));
 
     }
 
@@ -78,16 +76,16 @@ class CentroDeportivoController extends Controller
     }
     
     
-    public function show(string $id)
-    {
-          // Obtiene el centro deportivo
-    $centroDeportivo = CentroDeportivo::findOrFail($id);
+    // public function show(string $id)
+    // {
+    //       // Obtiene el centro deportivo
+    // $centroDeportivo = CentroDeportivo::findOrFail($id);
     
-    // Obtiene las canchas asociadas
-    $canchas = $centroDeportivo->canchas;
+    // // Obtiene las canchas asociadas
+    // $canchas = $centroDeportivo->canchas;
 
-    return view('canchas.show', compact('centroDeportivo', 'canchas'));
-    }
+    // return view('canchas.show', compact('centroDeportivo', 'canchas'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
