@@ -5,19 +5,33 @@ namespace App\Http\Controllers;
 use App\Models\CentroDeportivo;
 use App\Models\Cancha; 
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class CanchaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
+    public function listarCanchas(Request $request) {
+       
+        $centroDeportivoId = $request->input('centro_deportivo_id'); 
+        // Filtra las canchas por el centro deportivo especificado
+        $canchas = Cancha::where('centro_deportivo_id', $centroDeportivoId)->get();
+        // Carga el centro deportivo específico para pasarlo a la vista
+        $centroDeportivo = CentroDeportivo::find($centroDeportivoId);
+    
+        return view('listaCancha', compact('canchas', 'centroDeportivo'));
+    }
+    
+    
+    
 
     public function listar(Request $request)
     {
         $centrosDeportivos = CentroDeportivo::all();
         $canchas = Cancha::all();
         return view('admin.SuperAdmin.canchas.listaCancha', compact('centrosDeportivos', 'canchas'));
+
     }
 
 

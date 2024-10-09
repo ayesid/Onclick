@@ -59,49 +59,32 @@
         <div class="container py-5">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h2 text-success">"Sintéticas a un Click"</h1>
-                    <p>¡No te compliques la vida! ON CLICK te pone a un click de distancia de tu cancha sintética
-                        preferida. Revisa disponibilidad, reserva y abona desde donde te encuentres. Basta de llamadas
-                        sin contestar, ON CLICK es tu mejor aliado para que disfrutes de la pasión de futbol como debe
-                        ser.</p>
+                    <h1 class="h2 text-success">{{ $centroDeportivo->nombre ?? 'Centro Deportivo no encontrado' }}</h1>
+                    <p>{{ $centroDeportivo->descripcion ?? '' }}</p>
                 </div>
             </div>
-
-            <h3>Centros Deportivos</h3> <br>
+    
+            <h3>Canchas</h3> <br>
             <div class="row">
-
-
-                @foreach ($centrosDeportivos as $centroDeportivo)
+                @foreach ($canchas as $cancha)
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-
-                            <img src="{{ asset('img/' . $centroDeportivo->imagen) }} " class="card-img-top"
-                                alt="{{ $centroDeportivo->nombre }}" width="300px" height="300px">
-
-
+                            <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="300px" height="300px">
                             <div class="card-body">
-                                <a href="{{ route('canchas.listar', ['centro_deportivo_id' => $centroDeportivo->id]) }}"
-                                    class="h4 text-decoration-none text-success">{{ $centroDeportivo->nombre }}</a>
                                 <p class="card-text">
-                                    Dirección: {{ $centroDeportivo->direccion }}<br>
-                                    Teléfono: {{ $centroDeportivo->telefono }}<br>
-                                    Número de Canchas: {{ $centroDeportivo->numero_canchas }}<br>
-                                    Descripción: {{ $centroDeportivo->descripcion }}<br>
-                                    Ubicación: {{ $centroDeportivo->municipio ? $centroDeportivo->municipio->nombre : 'Sin ubicación' }}<br>
-                                    Parqueadero: {{ $centroDeportivo->parqueadero }}
+                                    Nombre: {{ $cancha->nombre }}<br>
+                                    Teléfono: {{ $cancha->telefono }}<br>
+                                    Precio: {{ $cancha->precio }} <br>
+                                    Descripción: {{ $cancha->descripcion }}<br>
                                 </p>
-
-
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
-
-
-
     </section>
+    
 
     <!-- Start Footer Section -->
     <footer class="footer-section bg-gradient">
