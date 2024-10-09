@@ -22,18 +22,18 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('homes', [HomeController::class, 'homes'])->name('homes');
-Route::post('home', [HomeController::class, 'home'])->name('home');
-Route::get('home', [HomeController::class, 'home'])->name('home');
-Route::get('Nosotros', [HomeController::class, 'Nosotros'])->name('Nosotros');
-route::get('nowelcome',[HomeController::class, 'nowelcome'])->name('nowelcome');
-Route::get('Servicios', [HomeController::class, 'Servicios'])->name('Servicios');
-Route::get('Serwelcome', [HomeController::class, 'seservicios'])->name('seservicios');
-Route::get('centroDeportivo/listarwel', [CentroDeportivoController::class, 'listaCentrosDeportivosWelcome'])->name('listaCentrosDeportivosWelcome');
+Route::get('homes', [HomeController::class, 'homes'])->name('homes');//esta ruta es para bienvenida
+Route::post('home', [HomeController::class, 'home'])->name('home');//esta para el usuario logeado
+Route::get('home', [HomeController::class, 'home'])->name('home');//esta para el usuario logeado
+Route::get('Nosotros', [HomeController::class, 'Nosotros'])->name('Nosotros');//esta para el usuario logeado
+route::get('nowelcome',[HomeController::class, 'nowelcome'])->name('nowelcome');//esta ruta es para bienvenida
+Route::get('Servicios', [HomeController::class, 'Servicios'])->name('Servicios');//esta para el usuario logeado
+Route::get('Serwelcome', [HomeController::class, 'seservicios'])->name('seservicios');//esta ruta es para bienvenida
+Route::get('centroDeportivo/listarwel', [CentroDeportivoController::class, 'listaCentrosDeportivosWelcome'])->name('listaCentrosDeportivosWelcome');//esta ruta es para bienvenida
 
 
  
-Route::get('centroDeportivo/listarsuper', [CentroDeportivoController::class, 'listaCentrosDeportivosuser'])->name('listaCentrosDeportivosuser');
+Route::get('centroDeportivo/listarsuper', [CentroDeportivoController::class, 'listaCentrosDeportivosuser'])->name('listaCentrosDeportivosuser');//esta para el usuario logeado
 Route::get('centroDeportivo/listar', [CentroDeportivoController::class, 'listaCentrosDeportivos'])->name('centroDeportivo.listar');
 Route::get('centroDeportivo/create', [CentroDeportivoController::class, 'create'])->name('centroDeportivo.create');
 Route::post('centroDeportivo/store', [CentroDeportivoController::class, 'store'])->name('centroDeportivo.store');
