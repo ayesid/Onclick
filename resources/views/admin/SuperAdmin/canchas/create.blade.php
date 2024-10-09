@@ -20,9 +20,6 @@
                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de cancha" required>
                 </div>
                 <div class="mb-3">
-                    <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required>
-                </div>
-                <div class="mb-3">
                     <input type="number" id="precio" name="precio" class="form-control" placeholder="Precio $" min="0" required>
                 </div>
                 <div class="mb-3">

@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Cancha extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'centro_deportivo_id', 
+        'nombre', 
+        'precio', 
+        'imagen', 
+        'descripcion'
+    ];
     
     public function centroDeportivo(){
         return $this->belongsTo('App\Models\CentroDeportivo');

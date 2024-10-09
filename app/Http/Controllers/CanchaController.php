@@ -56,22 +56,16 @@ class CanchaController extends Controller
 
     $cancha = new Cancha();
     $cancha->nombre = $request->nombre;
-    $cancha->telefono = $request->telefono;
     $cancha->precio = $request->precio;
     $cancha->centro_deportivo_id = $request->centro_deportivo_id;
     $cancha->descripcion = $request->descripcion;
 
     if ($request->hasFile('imagen')) {
-        $image = $request->file('imagen');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $file = $request->file('imagen');
+        $nombreArchivo = time() . '_' . $file->getClientOriginalName();
         
-        // Verifica si el archivo se guarda y si la ruta es correcta
-        if ($path = $image->storeAs('public/img', $imageName)) {
-            $cancha->imagen = basename($path); // Solo guarda el nombre del archivo
-        } else {
-            // Mensaje de error si no se puede guardar la imagen
-            return redirect()->back()->with('error', 'Error al guardar la imagen.');
-        }
+        $file->move(public_path('img'), $nombreArchivo);
+        $cancha->imagen = $nombreArchivo; // Guarda el nombre de la imagen en la base de datos
     }
 
     $cancha->save();
@@ -117,25 +111,16 @@ class CanchaController extends Controller
 
         $cancha = Cancha::findOrFail($id);
         $cancha->nombre = $request->nombre;
-        $cancha->telefono = $request->telefono;
         $cancha->precio = $request->precio;
         $cancha->centro_deportivo_id = $request->centro_deportivo_id;
         $cancha->descripcion = $request->descripcion;
-
         if ($request->hasFile('imagen')) {
-            // Eliminar la imagen antigua si existe
-            if ($cancha->imagen && file_exists(public_path('img/' . $cancha->imagen))) {
-                unlink(public_path('img/' . $cancha->imagen));
-            }
-
-            // Guardar la nueva imagen
+            $file = $request->file('imagen');
+            $nombreArchivo = time() . '_' . $file->getClientOriginalName();
             
-                $image = $request->file('imagen');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('public/img', $imageName);
-                $cancha->imagen = basename($path); // Guardamos solo el nombre del archivo
-            
-            
+            $file->move(public_path('img'), $nombreArchivo);
+            $cancha->imagen = $nombreArchivo; // Guarda el nombre de la imagen en la base de datos
+        
         }
 
         $cancha->save();

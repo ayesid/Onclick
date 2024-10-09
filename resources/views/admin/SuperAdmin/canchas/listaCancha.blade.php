@@ -2,7 +2,7 @@
 @section('content')
     <div class="container py-5">
         @component('components.card-form', [
-            'titulo' => 'Crear Cancha',
+            'titulo' => 'lista Cancha',
             'show' => false,
         ])
 <div class="row">
