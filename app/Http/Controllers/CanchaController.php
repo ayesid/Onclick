@@ -56,22 +56,16 @@ class CanchaController extends Controller
 
     $cancha = new Cancha();
     $cancha->nombre = $request->nombre;
-    $cancha->telefono = $request->telefono;
     $cancha->precio = $request->precio;
     $cancha->centro_deportivo_id = $request->centro_deportivo_id;
     $cancha->descripcion = $request->descripcion;
 
     if ($request->hasFile('imagen')) {
-        $image = $request->file('imagen');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $file = $request->file('imagen');
+        $nombreArchivo = time() . '_' . $file->getClientOriginalName();
         
-        // Verifica si el archivo se guarda y si la ruta es correcta
-        if ($path = $image->storeAs('public/img', $imageName)) {
-            $cancha->imagen = basename($path); // Solo guarda el nombre del archivo
-        } else {
-            // Mensaje de error si no se puede guardar la imagen
-            return redirect()->back()->with('error', 'Error al guardar la imagen.');
-        }
+        $file->move(public_path('img'), $nombreArchivo);
+        $cancha->imagen = $nombreArchivo; // Guarda el nombre de la imagen en la base de datos
     }
 
     $cancha->save();
@@ -105,43 +99,35 @@ class CanchaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
+            'centro_deportivo_id' => 'required|exists:centro_deportivos,id',
             'nombre' => 'required|string|max:255',
-            'telefono' => 'required|string',
             'precio' => 'required|numeric|min:0',
-            'imagen' => 'nullable|image',
             'descripcion' => 'nullable|string',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
+    
         $cancha = Cancha::findOrFail($id);
-        $cancha->nombre = $request->nombre;
-        $cancha->telefono = $request->telefono;
-        $cancha->precio = $request->precio;
         $cancha->centro_deportivo_id = $request->centro_deportivo_id;
+        $cancha->nombre = $request->nombre;
+        $cancha->precio = $request->precio;
         $cancha->descripcion = $request->descripcion;
-
+    
+        // Manejo de la imagen (si se sube una nueva imagen)
         if ($request->hasFile('imagen')) {
-            // Eliminar la imagen antigua si existe
-            if ($cancha->imagen && file_exists(public_path('img/' . $cancha->imagen))) {
-                unlink(public_path('img/' . $cancha->imagen));
-            }
-
-            // Guardar la nueva imagen
-            
-                $image = $request->file('imagen');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $path = $image->storeAs('public/img', $imageName);
-                $cancha->imagen = basename($path); // Guardamos solo el nombre del archivo
-            
-            
+            $file = $request->file('imagen');
+            $nombreArchivo = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $nombreArchivo);
+            $cancha->imagen = $nombreArchivo;
         }
-
+    
         $cancha->save();
-
-        return redirect()->route('canchas.listar')->with('success', 'Cancha actualizada con éxito');
+    
+        return redirect()->route('canchas.listar')->with('success', 'Cancha actualizada exitosamente');
     }
+    
 
     /**
      * Remove the specified resource from storage.
