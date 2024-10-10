@@ -128,7 +128,7 @@ class CanchaController extends Controller
         return redirect()->route('canchas.listar')->with('success', 'Cancha actualizada exitosamente');
     }
     
-
+ 
     /**
      * Remove the specified resource from storage.
      */
