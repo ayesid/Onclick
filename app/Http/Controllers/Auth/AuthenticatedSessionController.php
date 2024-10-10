@@ -22,14 +22,36 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     return redirect()->intended(route('home', absolute: false));
+    // }
     public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+{
+    // Autenticar al usuario
+    $request->authenticate();
 
-        $request->session()->regenerate();
+    // Regenerar la sesión para evitar fijación de sesión
+    $request->session()->regenerate();
 
-        return redirect()->intended(route('home', absolute: false));
+    // Verificar el tipo de persona del usuario autenticado
+    $tipoPersonaId = $request->user()->tipo_persona_id;
+
+    if ($tipoPersonaId === 3) {
+        // Redirigir a la vista de superadmin si el id es 3
+        return redirect()->route('centroDeportivo.create');
+    } elseif ($tipoPersonaId === 1) {
+        // Redirigir a la vista de usuario regular si el id es 1
+        return redirect()->route('home');
     }
+
+    // Redirigir a una vista predeterminada si no es ni 1 ni 3
+    return redirect()->route('default');
+}
 
     /**
      * Destroy an authenticated session.

@@ -30,9 +30,6 @@ class HomeController extends Controller
         return view('onclick.index');
     }
 
-   
-
-
 
 
     public function listaCentrosDeportivos()

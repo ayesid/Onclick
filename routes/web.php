@@ -22,7 +22,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('homes', [HomeController::class, 'homes'])->name('homes');//esta ruta es para bienvenida
+Route::get('homes', [HomeController::class, 'homes'])->name('homes');
+Route::post('homes', [HomeController::class, 'homes'])->name('homes');//esta ruta es para bienvenida
 Route::post('home', [HomeController::class, 'home'])->name('home');//esta para el usuario logeado
 Route::get('home', [HomeController::class, 'home'])->name('home');//esta para el usuario logeado
 Route::get('Nosotros', [HomeController::class, 'Nosotros'])->name('Nosotros');//esta para el usuario logeado

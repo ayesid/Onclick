@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>SAdmin</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    <link rel="icon" href="{{ asset('img/logo_sinfondo.png')}}" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('img/logo_sinfondo.png') }}" type="image/x-icon" />
 
     <!-- Fonts and icons -->
-    <script src="{{ asset('atlantis/assets/js/plugin/webfont/webfont.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
         WebFont.load({
             google: {
@@ -18,7 +18,7 @@
                 "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
                     "simple-line-icons"
                 ],
-                urls: ["{{ asset('atlantis/assets/css/fonts.min.css')}}"]
+                urls: ["{{ asset('atlantis/assets/css/fonts.min.css') }}"]
             },
             active: function() {
                 sessionStorage.fonts = true;
@@ -27,15 +27,17 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('atlantis/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('atlantis/assets/css/atlantis.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('atlantis/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('atlantis/assets/css/atlantis.min.css') }}">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('atlantis/assets/css/demo.css')}}">
+    <link rel="stylesheet" href="{{ asset('atlantis/assets/css/demo.css') }}">
 
     <style>
-        .form-group label, .form-check label {
-            white-space: normal; }
+        .form-group label,
+        .form-check label {
+            white-space: normal;
+        }
     </style>
 
 </head>
@@ -47,7 +49,8 @@
             <div class="logo-header" style="background: #3b5d50!important;">
 
                 <a href="#" class="logo">
-                    <img src="{{ asset('img/logo_sinfondo.png')}}" alt="navbar brand" class="navbar-brand" style="width: 25%">
+                    <img src="{{ asset('img/logo_sinfondo.png') }}" alt="navbar brand" class="navbar-brand"
+                        style="width: 25%">
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
                     data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +83,17 @@
                             </div>
                         </form>
                     </div>
-                    
+                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                        <li class="nav-item dropdown hidden-caret">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class=" btn btn-white" style="text-decoration: none;">
+                                    {{ __('Cerrar Sesión') }}
+                                  </button>
+                                
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </nav>
             <!-- End Navbar -->
@@ -124,103 +137,105 @@
                             <div class="collapse {{ request()->routeIs('centroDeportivo.*') ? 'show' : '' }}"
                                 id="centroDeportivo">
                                 <ul class="nav nav-collapse">
-                                    <li class="{{ request()->routeIs(['centroDeportivo.create', 'centroDeportivo.store']) ? 'active' : ''}}">
+                                    <li
+                                        class="{{ request()->routeIs(['centroDeportivo.create', 'centroDeportivo.store']) ? 'active' : '' }}">
                                         <a href="{{ route('centroDeportivo.create') }}">
                                             <span class="sub-item">Registra Centro Deportivo</span>
                                         </a>
                                     </li>
-                                    <<li class="{{ request()->routeIs(['centroDeportivo.listar', 'centroDeportivo.listar']) ? 'active' : ''}}">
+                                    <<li
+                                        class="{{ request()->routeIs(['centroDeportivo.listar', 'centroDeportivo.listar']) ? 'active' : '' }}">
                                         <a href="{{ route('centroDeportivo.listar') }}">
                                             <span class="sub-item">Gestionar Centro Deportivo</span>
                                         </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item {{ request()->routeIs('canchas.*') ? 'active' : '' }}">
-                            <a data-toggle="collapse" href="#canchas">
-                                <i class="fas fa-layer-group"></i>
-                                <p>Crear cancha</p>
-                                <span class="caret"></span>
-                            </a>
-                            <div class="collapse {{ request()->routeIs('canchas.*') ? 'show' : '' }}"
-                                id="canchas">
-                                <ul class="nav nav-collapse">
-                                    <li class="{{ request()->routeIs(['canchas.create', 'canchas.store']) ? 'active' : ''}}">
-                                        <a href="{{ route('canchas.create') }}">
-                                            <span class="sub-item">Registra Cancha</span>
-                                        </a>
-                                    </li>
-                                    <<li class="{{ request()->routeIs(['canchas.listar', 'canchas.listar']) ? 'active' : ''}}">
-                                        <a href="{{ route('canchas.listar') }}">
-                                            <span class="sub-item">Gestionar Cancha</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                     </ul>
                 </div>
+                </li>
+                <li class="nav-item {{ request()->routeIs('canchas.*') ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#canchas">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Crear cancha</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse {{ request()->routeIs('canchas.*') ? 'show' : '' }}" id="canchas">
+                        <ul class="nav nav-collapse">
+                            <li class="{{ request()->routeIs(['canchas.create', 'canchas.store']) ? 'active' : '' }}">
+                                <a href="{{ route('canchas.create') }}">
+                                    <span class="sub-item">Registra Cancha</span>
+                                </a>
+                            </li>
+                            <<li
+                                class="{{ request()->routeIs(['canchas.listar', 'canchas.listar']) ? 'active' : '' }}">
+                                <a href="{{ route('canchas.listar') }}">
+                                    <span class="sub-item">Gestionar Cancha</span>
+                                </a>
+                </li>
+                </ul>
             </div>
+            </li>
+            </ul>
         </div>
-        <!-- End Sidebar -->
+    </div>
+    </div>
+    <!-- End Sidebar -->
 
-        <div class="main-panel">
-            <div class="content">
-               
-                @yield('content')
-            </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
+    <div class="main-panel">
+        <div class="content">
 
-                    </nav>
-                    <div class="copyright ml-auto">
-                        {{now()->year}},&copy ONCLICK
+            @yield('content')
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
 
-                    </div>
+                </nav>
+                <div class="copyright ml-auto">
+                    {{ now()->year }},&copy ONCLICK
+
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
+    </div>
 
     </div>
     <!--   Core JS Files   -->
-    <script src="{{ asset('atlantis/assets/js/core/jquery.3.2.1.min.js')}}"></script>
-    <script src="{{ asset('atlantis/assets/js/core/popper.min.js')}}"></script>
-    <script src="{{ asset('atlantis/assets/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/core/jquery.3.2.1.min.js') }}"></script>
+    <script src="{{ asset('atlantis/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('atlantis/assets/js/core/bootstrap.min.js') }}"></script>
 
     <!-- jQuery UI -->
-    <script src="{{ asset('atlantis/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
-    <script src="{{ asset('atlantis/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="{{ asset('atlantis/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
 
     <!-- Chart JS -->
-    <script src="{{ asset('atlantis/assets/js/plugin/chart.js/chart.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/chart.js/chart.min.js') }}"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="{{ asset('atlantis/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
     <!-- Chart Circle -->
-    <script src="{{ asset('atlantis/assets/js/plugin/chart-circle/circles.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
 
     <!-- Datatables -->
-    <script src="{{ asset('atlantis/assets/js/plugin/datatables/datatables.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- Bootstrap Notify -->
-    <script src="{{ asset('atlantis/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="{{ asset('atlantis/assets/js/plugin/jqvmap/jquery.vmap.min.js')}}"></script>
-    <script src="{{ asset('atlantis/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script>
 
     <!-- Sweet Alert -->
-    <script src="{{ asset('atlantis/assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- Atlantis JS -->
-    <script src="{{ asset('atlantis/assets/js/atlantis.min.js')}}"></script>
+    <script src="{{ asset('atlantis/assets/js/atlantis.min.js') }}"></script>
 </body>
 
 </html>

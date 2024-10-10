@@ -13,11 +13,17 @@ class ReservaController extends Controller
  // Método para listar las reservas
  public function listaReservas()
  {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
      $reservas = Reserva::with('cancha')->get(); // Cargar reservas junto con la cancha
      return view('reservas.listaReserva', compact('reservas')); // Pasar reservas a la vista
  }
  public function create()
 {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
     $canchas = Cancha::all(); // Traer todas las canchas
     return view('reservas.create', compact('canchas')); // Enviar las canchas a la vista
 }
@@ -34,6 +40,9 @@ class ReservaController extends Controller
 
 public function store(Request $request)
 {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
     // Validar datos
     $validatedData = $request->validate([
         'nombre_cliente' => 'required|string|max:255',
@@ -66,6 +75,9 @@ public function store(Request $request)
 
 public function destroy($id)
 {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
     $reserva = Reserva::findOrFail($id); // Buscar la reserva por ID
     $reserva->delete(); // Eliminar la reserva
 
@@ -73,6 +85,9 @@ public function destroy($id)
 }
 public function edit($id)
 {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
     $reserva = Reserva::findOrFail($id); // Buscar la reserva por ID
     $canchas = Cancha::all(); // Obtener todas las canchas para el formulario
 
@@ -89,6 +104,9 @@ public function edit($id)
     // Método para devolver las reservas en formato JSON (para FullCalendar)
     public function getReservas()
     {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $reservas = Reserva::select('fecha_reserva', 'duracion', 'cancha_id')->get();
         $eventos = [];
 

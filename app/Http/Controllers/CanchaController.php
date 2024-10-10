@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\CentroDeportivo;
 use App\Models\Cancha; 
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class CanchaController extends Controller
 
     public function CanchasUser(Request $request)
     {
+       
         $centroDeportivoId = $request->input('centro_deportivo_id');
         $centroDeportivo = CentroDeportivo::with('canchas')->find($centroDeportivoId);
     
@@ -29,7 +31,9 @@ class CanchaController extends Controller
 
     
     public function listarCanchas(Request $request) { //inicio sesion
-       
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $centroDeportivoId = $request->input('centro_deportivo_id'); 
         $canchas = Cancha::where('centro_deportivo_id', $centroDeportivoId)->get();
         $centroDeportivo = CentroDeportivo::find($centroDeportivoId);
@@ -42,6 +46,9 @@ class CanchaController extends Controller
 
     public function listar(Request $request) //super admin
     {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $centrosDeportivos = CentroDeportivo::all();
         $canchas = Cancha::all();
         return view('admin.SuperAdmin.canchas.listaCancha', compact('centrosDeportivos', 'canchas'));
@@ -54,7 +61,9 @@ class CanchaController extends Controller
     public function create(Request $request)
 
     {
-
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $centrosDeportivos = CentroDeportivo::all();
         return view('admin.SuperAdmin.canchas.create', compact('centrosDeportivos'));
     }
@@ -64,6 +73,9 @@ class CanchaController extends Controller
 
     public function store(Request $request)
 {
+    if (!auth()->check()) {
+        return redirect()->route('login');
+    }
     $request->validate([
         'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
@@ -104,7 +116,9 @@ class CanchaController extends Controller
      */
     public function edit(string $id)
     {
-
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $cancha = Cancha::findOrFail($id);
         $centrosDeportivos = CentroDeportivo::all();
         return view('admin.SuperAdmin.canchas.edit', compact('cancha', 'centrosDeportivos'));
@@ -115,6 +129,11 @@ class CanchaController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+        
         $request->validate([
             'centro_deportivo_id' => 'required|exists:centro_deportivos,id',
             'nombre' => 'required|string|max:255',
@@ -148,6 +167,9 @@ class CanchaController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         $cancha = Cancha::findOrFail($id);
 
         // Eliminar la imagen asociada si existe
