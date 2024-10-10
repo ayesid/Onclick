@@ -16,47 +16,75 @@ class ReservaController extends Controller
      $reservas = Reserva::with('cancha')->get(); // Cargar reservas junto con la cancha
      return view('reservas.listaReserva', compact('reservas')); // Pasar reservas a la vista
  }
+ public function create()
+{
+    $canchas = Cancha::all(); // Traer todas las canchas
+    return view('reservas.create', compact('canchas')); // Enviar las canchas a la vista
+}
+
+ 
 
     public function disponibilidad($cancha_id) // Asegúrate de que estás recibiendo el ID de la cancha
 {
-    // Cargar la cancha específica
     $cancha = Cancha::findOrFail($cancha_id); // Obtiene la cancha
-
-    // Carga todas las canchas (si es necesario)
     $canchas = Cancha::all(); // Puede ser útil para listar todas las canchas
 
     return view('reservas.create', compact('canchas', 'cancha')); // Pasar también la cancha
 }
 
-    public function store(Request $request)
-    {
-        // Validación del formulario
-        $request->validate([
-            'nombre_cliente' => 'required|string|max:255',
-            'telefono_cliente' => 'required|string|max:20',
-            'email_cliente' => 'required|email',
-            'cancha_id' => 'required|exists:canchas,id',
-            'fecha_reserva' => 'required|date',
-            'duracion' => 'required|integer|min:1|max:6',
-        ]);
+public function store(Request $request)
+{
+    // Validar datos
+    $validatedData = $request->validate([
+        'nombre_cliente' => 'required|string|max:255',
+        'telefono_cliente' => 'required|string|max:20',
+        'email_cliente' => 'required|email',
+        'cancha_id' => 'required|exists:canchas,id', // Verifica que el ID sea válido
+        'fecha_reserva' => 'required|date',
+        'duracion' => 'required|integer|min:1|max:6',
+    ]);
+    
 
-        // Obtener la cancha y calcular el precio
-        $cancha = Cancha::findOrFail($request->cancha_id);
-        $total_precio = $cancha->precio * $request->duracion;
+    // Obtener la cancha y calcular el precio total
+    $cancha = Cancha::findOrFail($validatedData['cancha_id']);
+    $total_precio = $cancha->precio * $validatedData['duracion'];
 
-        // Guardar la reserva
-        Reserva::create([
-            'nombre_cliente' => $request->nombre_cliente,
-            'telefono_cliente' => $request->telefono_cliente,
-            'email_cliente' => $request->email_cliente,
-            'cancha_id' => $request->cancha_id,
-            'fecha_reserva' => Carbon::parse($request->fecha_reserva),
-            'duracion' => $request->duracion,
-            'total_precio' => $total_precio,
-        ]);
+    // Crear la reserva
+    Reserva::create([
+        'nombre_cliente' => $validatedData['nombre_cliente'],
+        'telefono_cliente' => $validatedData['telefono_cliente'],
+        'email_cliente' => $validatedData['email_cliente'],
+        'cancha_id' => $validatedData['cancha_id'], // Guardar el ID de la cancha
+        'fecha_reserva' => Carbon::parse($validatedData['fecha_reserva']),
+        'duracion' => $validatedData['duracion'],
+        'total_precio' => $total_precio,
+    ]);
 
-        return redirect()->back()->with('success', 'Reserva creada exitosamente.');
-    }
+    // Redirigir con un mensaje de éxito
+    return redirect()->back()->with('success', 'Reserva creada exitosamente.');
+}
+
+public function destroy($id)
+{
+    $reserva = Reserva::findOrFail($id); // Buscar la reserva por ID
+    $reserva->delete(); // Eliminar la reserva
+
+    return redirect()->back()->with('success', 'Reserva eliminada exitosamente.');
+}
+public function edit($id)
+{
+    $reserva = Reserva::findOrFail($id); // Buscar la reserva por ID
+    $canchas = Cancha::all(); // Obtener todas las canchas para el formulario
+
+    return view('reservas.edit', compact('reserva', 'canchas')); // Enviar los datos a la vista
+}
+
+
+
+
+
+
+
 
     // Método para devolver las reservas en formato JSON (para FullCalendar)
     public function getReservas()

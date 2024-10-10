@@ -43,6 +43,8 @@ Route::delete('centroDeportivo/{centroDeportivo}', [CentroDeportivoController::c
 Route::get('centroDeportivo/{centroDeportivo}/editar', [CentroDeportivoController::class, 'edit'])->name('centroDeportivo.edit');
 
 
+
+Route::get('CanchaUser', [CanchaController::class, 'CanchasUser'])->name('CanchaUser');
 Route::get('/listaCancha', [CanchaController::class, 'listarCanchas'])->name('listarCancha');
 Route::get('canchas', [CanchaController::class, 'listar'])->name('canchas.listar');
 Route::get('canchas/create', [CanchaController::class, 'create'])->name('canchas.create');
@@ -62,3 +64,9 @@ Route::get('reservas/listar', [ReservaController::class, 'listaReservas'])->name
 Route::get('/reservas/create/{cancha_id}', [ReservaController::class, 'disponibilidad'])->name('reservas.create');
 Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
 Route::get('/reservas/disponibilidad', [ReservaController::class, 'getReservas'])->name('reservas.getReservas');
+
+Route::get('/reservas/{id}/edit', [ReservaController::class, 'edit'])->name('reservas.edit'); // Formulario de edición
+Route::put('/reservas/{id}', [ReservaController::class, 'update'])->name('reservas.update'); // Actualizar reserva
+Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy'); // Eliminar reserva
+
+Route::get('/reservas/disponibilidad', [ReservaController::class, 'getDisponibilidad']);

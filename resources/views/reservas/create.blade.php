@@ -50,10 +50,14 @@
     </nav>
 
     <div class="container my-5">
-      <h1 class="text-center mb-4">Reserva de Canchas Sintéticas: {{ $cancha->nombre }}</h1> <!-- Aquí se muestra el nombre de la cancha -->
-      <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}">
+     
+        <h1 class="text-center mb-4">Reserva de Canchas Sintéticas: {{ $cancha->nombre }}</h1> <!-- Aquí se muestra el nombre de la cancha -->
+        
+
+        <a href="{{ route('reservas.create', ['cancha_id' => $cancha->id]) }}">
         <img src="{{ asset('img/' . $cancha->imagen) }}" class="card-img-top" alt="{{ $cancha->nombre }}" width="500" height="500">
       </a>
+      
         <!-- Tabla de precios -->
         <div class="card mb-4">
             <div class="card-header">Precios por Hora</div>
@@ -68,7 +72,7 @@
                     <tbody>
                         <tr><td>6:00 AM - 12:00 PM</td><td>$50.000</td></tr>
                         <tr><td>12:00 PM - 6:00 PM</td><td>$80.000</td></tr>
-                        <tr><td>6:00 PM - 11:00 PM</td><td>$100.000</td></tr>
+                        <tr><td>6:00 PM - 11:00 PM</td><td>{{ isset($cancha->precio) ? '$' . $cancha->precio : 'No disponible' }}</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -78,7 +82,7 @@
         <div class="card mb-4">
             <div class="card-header">Disponibilidad de la Cancha</div>
             <div class="card-body">
-                <div id="calendar" class="w-80">
+                <div id="calendar" class="w-50">
                 </div> 
             </div>
         </div>
@@ -89,6 +93,15 @@
             <div class="card-body">
                 <form action="{{ route('reservas.store') }}" method="POST">
                     @csrf
+                    <div class="mb-3">
+                        <select class="form-control" id="cancha_id" name="cancha_id" required>
+                            <option value="">Seleccione la cancha</option>
+                            @foreach ($canchas as $cancha)
+                                <option value="{{ $cancha->id }}">{{ $cancha->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre completo</label>
                         <input type="text" class="form-control" id="name" name="nombre_cliente" required>

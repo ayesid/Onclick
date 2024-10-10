@@ -24,10 +24,7 @@
                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de cancha"
                         value="{{ $cancha->nombre }}" required>
                 </div>
-                <div class="mb-3">
-                    <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" 
-                        value="{{ $cancha->telefono }}" required>
-                </div>
+               
                 <div class="mb-3">
                     <input type="number" id="precio" name="precio" class="form-control" placeholder="Precio $" 
                         value="{{ $cancha->precio }}" min="0" required>

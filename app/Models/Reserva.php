@@ -11,7 +11,7 @@ class Reserva extends Model
     //public function cancha(){
     //    return $this->belongsTo('App\Models\Cancha');
    /// }
-
+    
   
 
     public function factura(){

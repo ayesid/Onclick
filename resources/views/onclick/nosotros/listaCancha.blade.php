@@ -60,11 +60,12 @@
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
                     <h1 class="h2 text-success">{{ $centroDeportivo->nombre ?? 'Centro Deportivo no encontrado' }}</h1>
-                    <p>{{ $centroDeportivo->descripcion ?? '' }}</p>
+                    <p class="lead">{{ $centroDeportivo->descripcion ?? '' }}</p>
+
                 </div>
             </div>
     
-            <h3>Canchas</h3> <br>
+            <h3>Canchas Sinteticas</h3> <br>
             <div class="row mt-4">
                 @foreach ($canchas as $cancha)
                   <div class="col-12 col-md-4 mb-4"> <!-- Aquí está la clase col-12 col-md-4 -->

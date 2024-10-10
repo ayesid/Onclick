@@ -9,15 +9,29 @@ use PhpParser\Node\Expr\FuncCall;
 
 class CanchaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function listarCanchas(Request $request) {
+    
+
+    public function CanchasUser(Request $request)
+    {
+        $centroDeportivoId = $request->input('centro_deportivo_id');
+        $centroDeportivo = CentroDeportivo::with('canchas')->find($centroDeportivoId);
+    
+        if (!$centroDeportivo) {
+            return redirect()->route('homes')->with('error', 'Centro deportivo no encontrado');
+        }
+    
+        $canchas = $centroDeportivo->canchas;
+    
+        return view('canchas', compact('centroDeportivo', 'canchas'));
+    }
+    
+    
+
+    
+    public function listarCanchas(Request $request) { //inicio sesion
        
         $centroDeportivoId = $request->input('centro_deportivo_id'); 
-        // Filtra las canchas por el centro deportivo especificado
         $canchas = Cancha::where('centro_deportivo_id', $centroDeportivoId)->get();
-        // Carga el centro deportivo específico para pasarlo a la vista
         $centroDeportivo = CentroDeportivo::find($centroDeportivoId);
     
         return view('onclick.nosotros.listaCancha', compact('canchas', 'centroDeportivo'));
@@ -26,7 +40,7 @@ class CanchaController extends Controller
     
     
 
-    public function listar(Request $request)
+    public function listar(Request $request) //super admin
     {
         $centrosDeportivos = CentroDeportivo::all();
         $canchas = Cancha::all();
