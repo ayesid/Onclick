@@ -29,12 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarsFurni">
               <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
                 <li><a class="nav-link" href="{{ route('home') }}">Inicio</a></li>
-                <li><a class="nav-link" href="{{ route('listaCentrosDeportivosWelcome') }}">Centros Deportivos</a></li>
+                <li><a class="nav-link" href="{{ route('listaCentrosDeportivosuser') }}">Centros Deportivos</a></li>
                 <li><a class="nav-link" href="{{route('Nosotros')}}">Acerca De Nosotros</a></li>
                 <li><a class="nav-link" href="{{route('Servicios')}}">Servicios</a></li>
               </ul>
               <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                <li><a class="nav-link" href="{{ route('Reservas.listar') }}"><img src="{{asset('images/cart.svg')}}"></a></li>
+                <li><a class="nav-link"
+                   href="{{ route('Reservas.listar') }}"><img src="{{asset('images/cart.svg')}}"></a></li>
                 <div class="nav-link">
                   <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -55,37 +56,51 @@
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
-
         <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Email</th>
-                    <th>Fecha de Reserva</th>
-                    <th>Duración</th>
-                    <th>Cancha</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($reservas as $reserva)
-                    <tr>
-                        <td>{{ $reserva->id }}</td>
-                        <td>{{ $reserva->nombre_cliente }}</td>
-                        <td>{{ $reserva->telefono_cliente }}</td>
-                        <td>{{ $reserva->email_cliente }}</td>
-                        <td>{{ $reserva->fecha_reserva }}</td>
-                        <td>{{ $reserva->duracion }} hora(s)</td>
-                        <td>{{ $reserva->cancha->nombre }}</td>
-                        <td>
-                           
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Teléfono</th>
+                  <th>Email</th>
+                  <th>Fecha de Reserva</th>
+                  <th>Duración</th>
+                  <th>Cancha</th>
+                  <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody>
+              @foreach($reservas as $reserva)
+                  <tr>
+                      <td>{{ $reserva->id }}</td>
+                      <td>{{ $reserva->nombre_cliente }}</td>
+                      <td>{{ $reserva->telefono_cliente }}</td>
+                      <td>{{ $reserva->email_cliente }}</td>
+                      <td>{{ $reserva->fecha_reserva }}</td>
+                      <td>{{ $reserva->duracion }} hora(s)</td>
+                      <td>
+                        @if ($reserva->cancha)
+                            {{ $reserva->cancha->nombre }}
+                        @else
+                            Cancha no asignada
+                        @endif
+                    </td>
+                                          <td>
+                          <!-- Botón para editar -->
+                          <a href="{{ route('reservas.edit', $reserva->id) }}" class="btn btn-warning btn-sm">Editar</a>
+      
+                          <!-- Botón para eliminar -->
+                          <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                          </form>
+                      </td>
+                  </tr>
+              @endforeach
+          </tbody>
+      </table>
+
     </div> <br>
     <br>
 
